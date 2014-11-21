@@ -10,22 +10,30 @@
 #                                                                              #
 #******************************************************************************#
 
-NAME = ft_ls.a
+NAME = ft_ls
 
 CFLAG = -Wall -Werror -Wextra 
 
-SOURCE = ft_ls.c
+SOURCE = ft_ls.c \
+	ft_ls_a.c \
+	main.c
 
-POINTO = ft_ls.o
+POINTO = ft_ls.o \
+	ft_ls_a.o \
+	main.o
 
 all: $(NAME)
 
 $(NAME):
-	@gcc $(CFLAG) -c $(SOURCE) -I includes
-	@ar rc ft_ls.a $(POINTO)
+	@make -C libft/ fclean
+	@make -C libft
+	@make -C libft/ clean
+	@gcc $(CFLAG) -L libft/includes/ -lft -c $(SOURCE)
+	@gcc -o $(NAME) $(POINTO) -L libft/ -lft
+	@ar rc ft_ls_a $(POINTO)
 	@ranlib ft_ls.a
 test:
-	@gcc $(CFLAG) ft_ls.c
+	@gcc $(CFLAG) -o ft_ls $(NAME)
 
 clean:
 	@rm -rf $(POINTO)

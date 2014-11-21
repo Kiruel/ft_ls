@@ -5,20 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/20 15:22:10 by etheodor          #+#    #+#             */
-/*   Updated: 2014/11/20 15:45:35 by etheodor         ###   ########.fr       */
+/*   Created: 2014/11/21 11:03:48 by etheodor          #+#    #+#             */
+/*   Updated: 2014/11/21 11:03:49 by etheodor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <errno.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <dirent.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include "libft/includes/libft.h"
+#include "ft_ls.h"
 
-void	ft_l_l()
+void	ft_ls()
 {
 	DIR *ret = NULL;
 	struct dirent *file_opened = NULL;
@@ -31,20 +25,15 @@ void	ft_l_l()
 	}
 	while ((file_opened = readdir(ret)) != 0)
 	{
-		ft_putstr(file_opened->d_name);
-		ft_putchar('\n');
+		if (!(file_opened->d_name[0] == '.'))
+		{
+			ft_putstr(file_opened->d_name);
+			ft_putchar('\n');			
+		}
 	}
 	if (closedir(ret) == -1)
 	{
 		perror("");
 		exit(-1);
 	}
-}
-
-int		main(int ac, char **av)
-{
-	if (!(ft_strcmp(av[1], "-a")))
-		ft_l_l();
-	ac++;
-	return (0);
 }
