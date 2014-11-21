@@ -12,29 +12,10 @@
 
 #include "ft_ls.h"
 
-char	**ft_sort_out(char **ptr, struct dirent *file_opened)
-{
-	int i;
-
-	i = 0;
-	while (i < ptr)
-	{
-		ptr[0][i] = file_opened->d_name;
-		i++;
-	}
-/*	if (!(file_opened->d_name[0] == '.'))
-	{
-		ft_putstr(file_opened->d_name);
-		ft_putchar('\n');
-	}*/
-}
-
 void	ft_ls()
 {
 	DIR 			*ret = NULL;
 	struct dirent 	*file_opened = NULL;
-	char **name;
-	int i;
 
 	ret = opendir(".");
 	if (ret == NULL)
@@ -42,14 +23,14 @@ void	ft_ls()
 		perror("");
 		exit(1);
 	}
-	i = 0;
 	while ((file_opened = readdir(ret)) != 0)
-		i++;
-	name = (char**)malloc(sizeof(char*) * i + 1);
-	name[0][i] = 0;
-	i = 0;
-	while ((file_opened = readdir(ret)) != 0)
-		ft_sort_out(name, file_opened);
+	{
+		if (!(file_opened->d_name[0] == '.'))
+		{
+			ft_putstr(file_opened->d_name);
+			ft_putchar('\n');
+		}
+	}
 	if (closedir(ret) == -1)
 	{
 		perror("");
