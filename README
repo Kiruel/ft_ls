@@ -1,0 +1,32 @@
+#################################################################################
+################################## PROJET FT_LS : ###############################
+#################################################################################
+
+Refaire la commande ls avec les options suivante :
+
+_________________________________________________________________________________
+-l :
+   En plus du nom, afficher le type du fichier, les permissions d'accès, le 
+nombre de liens physiques, le nom du propriétaire et du groupe, la taille en
+ octets, et l'horodatage. Les types de fichiers sont indiqués par les caractères 
+suivants : - pour les fichiers ordinaires, d pour un répertoire (directory), 
+b pour un fichier spécial en mode bloc, c pour un fichier spécial en mode 
+caractère, l pour un lien symbolique, p pour une fifo (named pipe), s pour 
+une socket. Par défaut l'horodatage présenté est celui de la dernière 
+modification du fichier. Les options -c et -u réclament les autres horodatages. 
+Pour les fichiers spéciaux, le champ de taille est généralement remplacé par 
+les numéros majeur et mineur du périphérique.
+_________________________________________________________________________________
+-R :
+   Afficher récursivement le contenu des sous-répertoires.
+_________________________________________________________________________________
+-a :
+   Afficher tous les fichiers des répertoires, y compris les fichiers commençant 
+par un `.'.
+_________________________________________________________________________________
+-r : 
+   Inverser le tri du contenu des répertoires.
+_________________________________________________________________________________
+-t :
+   Trier le contenu des répertoires en fonction de la date et non pas en ordre 
+alphabétique. Les fichiers les plus récents sont présentés en premier.
