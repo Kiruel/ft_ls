@@ -32,12 +32,10 @@ $(NAME):
 	@gcc -o $(NAME) $(POINTO) -L libft/ -lft
 	@ar rc ft_ls_a $(POINTO)
 	@ranlib ft_ls.a
-test:
-	@gcc $(CFLAG) -o ft_ls $(NAME)
+	@make clean
 
 clean:
 	@rm -rf $(POINTO)
-
 
 fclean: clean
 	@rm -rf $(NAME)
