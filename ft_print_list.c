@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.c                                            :+:      :+:    :+:   */
+/*   ft_print_list.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/21 11:03:48 by etheodor          #+#    #+#             */
-/*   Updated: 2014/11/21 11:03:49 by etheodor         ###   ########.fr       */
+/*   Created: 2014/11/23 17:05:18 by etheodor          #+#    #+#             */
+/*   Updated: 2014/11/23 17:05:20 by etheodor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "includes/ft_ls.h"
 
-void	ft_ls()
+void	ft_print_list(t_data *list)
 {
-	DIR 		*s_dir;
-	s_dirent	*poil;
-	t_data *list;
+	t_data	*tmp;
 
-	s_dir = opendir(".");
-	while ((poil = readdir(s_dir)) != NULL)
+	tmp = list;
+	while (tmp != NULL)
 	{
-		if (poil->d_name[0] != '.')
-			list = ft_addlink(list, poil->d_name);
+		ft_putendl(tmp->name);
+		tmp = tmp->next;
 	}
-	list = ft_sort_list(list);
-	ft_print_list(list);
 }

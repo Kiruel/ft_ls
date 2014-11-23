@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.c                                            :+:      :+:    :+:   */
+/*   ft_addlink.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/21 11:03:48 by etheodor          #+#    #+#             */
-/*   Updated: 2014/11/21 11:03:49 by etheodor         ###   ########.fr       */
+/*   Created: 2014/11/23 17:06:12 by etheodor          #+#    #+#             */
+/*   Updated: 2014/11/23 17:06:13 by etheodor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "includes/ft_ls.h"
 
-void	ft_ls()
+t_data	*ft_addlink(t_data *list, char *str)
 {
-	DIR 		*s_dir;
-	s_dirent	*poil;
-	t_data *list;
+	int i;
+	t_data *brick;
+	t_data *tmp;
 
-	s_dir = opendir(".");
-	while ((poil = readdir(s_dir)) != NULL)
+	tmp = list;
+	brick = (t_data*)malloc(sizeof(t_data));
+	if (brick == 0)
+		return (NULL);
+	i = 0;
+	while (i < 256)
 	{
-		if (poil->d_name[0] != '.')
-			list = ft_addlink(list, poil->d_name);
+		brick->name[i] = str[i];
+		i++;
 	}
-	list = ft_sort_list(list);
-	ft_print_list(list);
+	if (list == NULL)
+		return (brick);
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = brick;
+	return (list);
 }

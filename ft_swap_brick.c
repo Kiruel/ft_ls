@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.c                                            :+:      :+:    :+:   */
+/*   ft_swap_brick.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/21 11:03:48 by etheodor          #+#    #+#             */
-/*   Updated: 2014/11/21 11:03:49 by etheodor         ###   ########.fr       */
+/*   Created: 2014/11/23 18:16:28 by etheodor          #+#    #+#             */
+/*   Updated: 2014/11/23 18:16:30 by etheodor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_ls.h"
 
-void	ft_ls()
+void	ft_swap_brick(t_data *tmp, t_data *begin)
 {
-	DIR 		*s_dir;
-	s_dirent	*poil;
-	t_data *list;
-
-	s_dir = opendir(".");
-	while ((poil = readdir(s_dir)) != NULL)
-	{
-		if (poil->d_name[0] != '.')
-			list = ft_addlink(list, poil->d_name);
-	}
-	list = ft_sort_list(list);
-	ft_print_list(list);
+	t_data *avant;
+	t_data *apres;
+	
+	avant = begin;
+	while (avant->next != tmp)
+		avant = avant->next;
+	avant->next = tmp->next;
+	apres = tmp->next;
+	tmp->next = apres->next;
+	apres->next = tmp;
 }

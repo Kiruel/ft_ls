@@ -10,27 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "includes/ft_ls.h"
 
 void	ft_ls_a()
 {
-	DIR *ret = NULL;
-	struct dirent *file_opened = NULL;
+	DIR 		*s_dir;
+	s_dirent	*poil;
+	t_data 		*list;
 
-	ret = opendir(".");
-	if (ret == NULL)
-	{
-		perror("");
-		exit(1);
-	}
-	while ((file_opened = readdir(ret)) != 0)
-	{
-		ft_putstr(file_opened->d_name);
-		ft_putchar('\n');
-	}
-	if (closedir(ret) == -1)
-	{
-		perror("");
-		exit(-1);
-	}
+	list = NULL;
+	s_dir = opendir(".");
+	while ((poil = readdir(s_dir)) != NULL)
+		list = ft_addlink(list, poil->d_name);
+	ft_print_list(list);
 }

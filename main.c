@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
+#include "includes/ft_ls.h"
 
 int		main(int ac, char **av)
 {
@@ -33,7 +33,7 @@ int		main(int ac, char **av)
 		ft_ls();
 		return (0);
 	}
-	if (!(ft_strcmp(av[1], "-a")))
+	if (ft_strcmp(av[1], "-a") == 0)
 	{
 		ft_ls_a();
 		return (0);

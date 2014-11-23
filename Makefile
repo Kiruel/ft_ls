@@ -16,11 +16,13 @@ CFLAG = -Wall -Werror -Wextra
 
 SOURCE = ft_ls.c \
 	ft_ls_a.c \
-	main.c
+	main.c \
+	ft_addlink.c \
+	ft_print_list.c \
+	ft_sort_list.c \
+	ft_swap_brick.c
 
-POINTO = ft_ls.o \
-	ft_ls_a.o \
-	main.o
+POINTO = $(SOURCE:.c=.o)
 
 all: $(NAME)
 
@@ -28,10 +30,8 @@ $(NAME):
 	@make -C libft/ fclean
 	@make -C libft
 	@make -C libft/ clean
-	@gcc $(CFLAG) -L libft/includes/ -lft -c $(SOURCE)
-	@gcc -o $(NAME) $(POINTO) -L libft/ -lft
-	@ar rc ft_ls_a $(POINTO)
-	@ranlib ft_ls.a
+	@gcc $(CFLAG) -c $(SOURCE) -L libft/ -lft
+	@gcc -o $(NAME) $(POINTO) -L libft/ -lft -I includes/
 	@make clean
 
 clean:
