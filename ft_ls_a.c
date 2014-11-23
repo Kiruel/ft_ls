@@ -22,5 +22,6 @@ void	ft_ls_a()
 	s_dir = opendir(".");
 	while ((poil = readdir(s_dir)) != NULL)
 		list = ft_addlink(list, poil->d_name);
+	list = ft_sort_list(list);
 	ft_print_list(list);
 }

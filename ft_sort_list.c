@@ -15,13 +15,25 @@
 t_data	*ft_sort_list(t_data *begin)
 {
 	t_data *tmp;
+	int i;
 
-	tmp = begin;
-	while (tmp->next != 0)
+	i = 1;
+	while (i)
 	{
-		if (ft_strcmp(tmp->name, tmp->next->name) > 0)
-			ft_swap_brick(tmp, begin);
-		tmp = tmp->next;
+		i = 0;
+		tmp = begin;
+		while (tmp->next)
+		{
+			if (ft_strcmp(tmp->name, tmp->next->name) > 0)
+			{
+				i = 1;
+				ft_swap_brick(tmp, &begin);
+			}
+			else
+			{
+				tmp = tmp->next;
+			}
+		}
 	}
 	return (begin);
 }

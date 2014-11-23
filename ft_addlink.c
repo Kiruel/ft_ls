@@ -28,9 +28,13 @@ t_data	*ft_addlink(t_data *list, char *str)
 		i++;
 	}
 	if (list == NULL)
+	{
+		brick->next = NULL;
 		return (brick);
+	}
 	while (tmp->next != NULL)
 		tmp = tmp->next;
 	tmp->next = brick;
+	brick->next = NULL;
 	return (list);
 }

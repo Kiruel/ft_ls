@@ -19,6 +19,7 @@ void	ft_ls()
 	t_data *list;
 
 	s_dir = opendir(".");
+	list = NULL;
 	while ((poil = readdir(s_dir)) != NULL)
 	{
 		if (poil->d_name[0] != '.')
