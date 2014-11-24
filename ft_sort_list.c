@@ -12,7 +12,7 @@
 
 #include "includes/ft_ls.h"
 
-t_data	*ft_sort_list(t_data *begin, char r)
+t_data	*ft_sort_list(t_data **begin, char *opt)
 {
 	t_data *tmp;
 	int i;
@@ -21,24 +21,30 @@ t_data	*ft_sort_list(t_data *begin, char r)
 	while (i)
 	{
 		i = 0;
-		tmp = begin;
+		tmp = *begin;
 		while (tmp->next)
 		{
-			if (ft_strcmp(tmp->name, tmp->next->name) < 0  && r == 'r')
+			if (opt[3] == 'r')
 			{
-				i = 1;
-				ft_swap_brick(tmp, &begin);
+				if (ft_strcmp(tmp->name, tmp->next->name) < 0)
+				{
+					i = 1;
+					ft_swap_brick(tmp, begin);
+				}
+				else
+					tmp = tmp->next;				
 			}
 			else
-				tmp = tmp->next;
-			if (ft_strcmp(tmp->name, tmp->next->name) > 0)
 			{
-				i = 1;
-				ft_swap_brick(tmp, &begin);
+				if (ft_strcmp(tmp->name, tmp->next->name) > 0)
+				{
+					i = 1;
+					ft_swap_brick(tmp, begin);
+				}
+				else
+					tmp = tmp->next;
 			}
-			else
-				tmp = tmp->next;
 		}
 	}
-	return (begin);
+	return (*begin);
 }

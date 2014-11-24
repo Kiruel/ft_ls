@@ -12,48 +12,29 @@
 
 #include "includes/ft_ls.h"
 
-int		main(int ac, char **av)
+int     main(int ac, char **av)
 {
 	int i;
-	int j;
-	int k;
-	int a;
+    char    opt[5];
 
-	j = 0;
-	i = 2;
-	a = 0;
-	k = 0;
-	if (ac == 1)
-	{		
-		ft_ls(0);
-		return (0);
-	}
-	if (!(av[1][0] == '-'))
-	{
-		ft_putstr("ft_ls: ");
-		ft_putstr(av[i]);
-		ft_putstr(": No such file or directory\n");
-		return (0);
-	}
-	i = 0;
-	while (av[i] != 0)
-	{
-		j = 0;
-		while (av[i][j] != 0)
-		{
-			if (av[i][j] == 'a' && k == 0)
-			{
-				ft_ls('a');
-				k++;
-			}
-			if (av[i][j] == 'r' && a == 0)
-			{
-				ft_ls('r');
-				a++;
-			}
-			j++;
-		}
-		i++;
-	}
-	return (0);
+    i = -1;
+    while (opt[i++] != '\0')
+    	opt[i] = '\0';
+    i = 0;
+    while (ac > 1 && av[1][i] != '\0' && av[1][0] == '-')
+    {
+        if (av[1][i] == 'l')
+            opt[0] = 'l';
+        if (av[1][i] == 'R')
+            opt[1] = 'R';
+        if (av[1][i] == 'a')
+            opt[2] = 'a';
+        if (av[1][i] == 'r')
+            opt[3] = 'r';
+        if (av[1][i] == 't')
+            opt[4] = 't';
+        i++;
+    }
+    ft_ls(opt);
+    return (0);
 }

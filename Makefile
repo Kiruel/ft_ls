@@ -6,7 +6,7 @@
 #    By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/20 15:13:13 by etheodor          #+#    #+#              #
-#    Updated: 2014/11/20 15:13:15 by etheodor         ###   ########.fr        #
+#    Updated: 2014/11/24 16:30:50 by etheodor         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -29,6 +29,11 @@ $(NAME):
 	@make -C libft/ fclean
 	@make -C libft
 	@make -C libft/ clean
+	@gcc $(CFLAG) -c $(SOURCE) -L libft/ -lft
+	@gcc -o $(NAME) $(POINTO) -L libft/ -lft -I includes/
+	@make clean
+
+test:
 	@gcc $(CFLAG) -c $(SOURCE) -L libft/ -lft
 	@gcc -o $(NAME) $(POINTO) -L libft/ -lft -I includes/
 	@make clean
