@@ -15,7 +15,6 @@ NAME = ft_ls
 CFLAG = -Wall -Werror -Wextra 
 
 SOURCE = ft_ls.c \
-	ft_ls_a.c \
 	main.c \
 	ft_addlink.c \
 	ft_print_list.c \

@@ -16,7 +16,7 @@ void	ft_swap_brick(t_data *tmp, t_data **begin)
 {
 	t_data *avant;
 	t_data *apres;
-	
+
 	if (tmp == *begin)
 	{
 		apres = tmp->next;

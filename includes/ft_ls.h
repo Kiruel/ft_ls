@@ -27,11 +27,10 @@ typedef struct 	s_data
 	struct s_data *next;
 }				t_data;
 
-void	ft_ls();
-void	ft_ls_a();
+void	ft_ls(char a);
 t_data	*ft_addlink(t_data *list, char *str);
 void	ft_print_list(t_data *list);
-t_data	*ft_sort_list(t_data *begin);
+t_data	*ft_sort_list(t_data *begin, char r);
 void	ft_swap_brick(t_data *tmp, t_data **begin);
 
 #endif
