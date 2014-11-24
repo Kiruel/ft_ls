@@ -16,12 +16,17 @@ void	ft_ls(char *opt)
 {
 	DIR 		*s_dir;
 	s_dirent	*poil;
-	t_data *list;
+	t_data 		*list;
+	s_stat		megapoil;
 
 	s_dir = opendir(".");
+
 	list = NULL;
 	while ((poil = readdir(s_dir)) != NULL)
 	{
+		(void)stat(poil->d_name, &megapoil);
+		if (opt[0] == 'l')
+			list = ft_addlink_stats(list, s_dir);
 		if (opt[2] == 'a')
 			list = ft_addlink(list, poil->d_name);
 		if (opt[2] != 'a')

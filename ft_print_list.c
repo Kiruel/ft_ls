@@ -19,6 +19,7 @@ void	ft_print_list(t_data *list)
 	while (tmp != NULL)
 	{
 		ft_putendl(tmp->name);
+		ft_putnbr(tmp->ctimes);
 		tmp = tmp->next;
 	}
 }

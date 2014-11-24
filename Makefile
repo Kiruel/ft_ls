@@ -19,7 +19,8 @@ SOURCE = ft_ls.c \
 	ft_addlink.c \
 	ft_print_list.c \
 	ft_sort_list.c \
-	ft_swap_brick.c
+	ft_swap_brick.c \
+	ft_addlink_stats.c
 
 POINTO = $(SOURCE:.c=.o)
 
@@ -29,12 +30,12 @@ $(NAME):
 	@make -C libft/ fclean
 	@make -C libft
 	@make -C libft/ clean
-	@gcc $(CFLAG) -c $(SOURCE) -L libft/ -lft
+	@gcc -c $(SOURCE) -L libft/ -lft
 	@gcc -o $(NAME) $(POINTO) -L libft/ -lft -I includes/
 	@make clean
 
 test:
-	@gcc $(CFLAG) -c $(SOURCE) -L libft/ -lft
+	@gcc -c $(SOURCE) -L libft/ -lft
 	@gcc -o $(NAME) $(POINTO) -L libft/ -lft -I includes/
 	@make clean
 

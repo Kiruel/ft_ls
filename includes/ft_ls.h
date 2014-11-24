@@ -19,12 +19,14 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include "../libft/includes/libft.h"
-# define  s_dirent struct dirent 
+# define  s_dirent struct dirent
+# define  s_stat struct stat
 
 typedef struct 	s_data
 {
-	char name[256];
-	struct s_data *next;
+	char 	name[256];
+	int		ctimes;
+	struct 	s_data *next;
 }				t_data;
 
 void	ft_ls(char *a);
@@ -32,5 +34,6 @@ t_data	*ft_addlink(t_data *list, char *str);
 void	ft_print_list(t_data *list);
 t_data	*ft_sort_list(t_data **begin, char *opt);
 void	ft_swap_brick(t_data *tmp, t_data **begin);
+t_data	*ft_addlink_stats(t_data *list, DIR *s_dir);
 
 #endif
