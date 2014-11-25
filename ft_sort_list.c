@@ -24,13 +24,23 @@ t_data	*ft_sort_list(t_data **begin, char *opt)
 		tmp = *begin;
 		while (tmp->next)
 		{
-			if (ft_strcmp(tmp->name, tmp->next->name) > 0)
+			if (opt[4] == 't')
+			{
+				if (tmp->mtimes < tmp->next->mtimes)
+				{
+					i = 1;
+					ft_swap_brick(tmp, begin);
+				}
+				else
+					tmp = tmp->next;
+			}
+/*			if (ft_strcmp(tmp->name, tmp->next->name) > 0)
 			{
 				i = 1;
 				ft_swap_brick(tmp, begin);
 			}
 			else
-				tmp = tmp->next;
+				tmp = tmp->next;*/
 		}
 	}
 	if (opt[3] == 'r')

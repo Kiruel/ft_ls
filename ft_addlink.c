@@ -13,12 +13,15 @@
 
 t_data	*ft_addlink(t_data *list, char *str)
 {
-	int i;
-	t_data *brick;
-	t_data *tmp;
+	int 	i;
+	t_data 	*brick;
+	t_data 	*tmp;
+	s_stat	megapoil;
 
 	tmp = list;
+	(void)stat(str, &megapoil);
 	brick = (t_data*)malloc(sizeof(t_data));
+	brick->mtimes = (int)megapoil.st_mtime;
 	if (brick == 0)
 		return (NULL);
 	i = 0;
