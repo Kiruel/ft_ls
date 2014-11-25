@@ -25,7 +25,7 @@ t_data	*ft_addlink(t_data *list, char *str)
 	brick->mtimes = megapoil.st_mtime;
 	brick->sizes = (int)megapoil.st_size;
 	brick->uid = (int)megapoil.st_uid;
-	brick->gid = megapoil.st_gid;
+	brick->gid = (int)megapoil.st_gid;
 	brick->name = str;
 	if (list == NULL)
 	{

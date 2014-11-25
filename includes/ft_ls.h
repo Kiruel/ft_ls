@@ -21,6 +21,7 @@
 # include <sys/stat.h>
 # include <time.h>
 # include <pwd.h>
+# include <grp.h>
 # include <uuid/uuid.h>
 # include "../libft/includes/libft.h"
 # define  s_dirent struct dirent
@@ -32,7 +33,7 @@ typedef struct 	s_data
 	int				mtimes;
 	time_t			sizes;
 	int				uid;
-	gid_t			gid;
+	int				gid;
 	char			*name_owner;
 	char			*name_group;
 	struct 			s_data *next;
