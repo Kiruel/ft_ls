@@ -28,12 +28,13 @@ typedef struct 	s_data
 {
 	char 			name[256];
 	int				mtimes;
+	int 			sizes;
 	struct 			s_data *next;
 }				t_data;
 
 void	ft_ls(char *a);
 t_data	*ft_addlink(t_data *list, char *str);
-void	ft_print_list(t_data *list);
+void	ft_print_list(t_data *list, char *opt);
 t_data	*ft_sort_list(t_data **begin, char *opt);
 void	ft_swap_brick(t_data *tmp, t_data **begin);
 void	ft_list_reverse(t_data **begin_list);

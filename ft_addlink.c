@@ -22,6 +22,7 @@ t_data	*ft_addlink(t_data *list, char *str)
 	(void)stat(str, &megapoil);
 	brick = (t_data*)malloc(sizeof(t_data));
 	brick->mtimes = (int)megapoil.st_mtime;
+	brick->sizes = (int)megapoil.st_size;
 	if (brick == 0)
 		return (NULL);
 	i = 0;

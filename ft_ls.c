@@ -34,5 +34,5 @@ void	ft_ls(char *opt)
 		}
 	}
 	list = ft_sort_list(&list, opt);
-	ft_print_list(list);
+	ft_print_list(list, opt);
 }

@@ -34,13 +34,16 @@ t_data	*ft_sort_list(t_data **begin, char *opt)
 				else
 					tmp = tmp->next;
 			}
-/*			if (ft_strcmp(tmp->name, tmp->next->name) > 0)
-			{
-				i = 1;
-				ft_swap_brick(tmp, begin);
-			}
 			else
-				tmp = tmp->next;*/
+			{
+				if (ft_strcmp(tmp->name, tmp->next->name) > 0)
+				{
+					i = 1;
+					ft_swap_brick(tmp, begin);
+				}
+				else
+					tmp = tmp->next;				
+			}
 		}
 	}
 	if (opt[3] == 'r')

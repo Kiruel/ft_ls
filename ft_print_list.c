@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "includes/ft_ls.h"
 
-void	ft_print_list(t_data *list)
+void	ft_print_list(t_data *list, char *opt)
 {
 	t_data	*tmp;
 	char *rettime;
@@ -21,8 +21,11 @@ void	ft_print_list(t_data *list)
 	{
 		rettime = ctime((const time_t *)&tmp->mtimes);
 		rettime = ft_strsub(rettime, 4, 12);
-		ft_putstr(rettime);
-		ft_putchar(' ');
+		if (opt[0] == 'l')
+		{
+			ft_putstr(rettime);
+			ft_putchar(' ');
+		}
 		ft_putendl(tmp->name);
 		tmp = tmp->next;
 	}
