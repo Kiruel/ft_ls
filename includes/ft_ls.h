@@ -35,5 +35,6 @@ void	ft_print_list(t_data *list);
 t_data	*ft_sort_list(t_data **begin, char *opt);
 void	ft_swap_brick(t_data *tmp, t_data **begin);
 t_data	*ft_addlink_stats(t_data *list, DIR *s_dir);
+void	ft_list_reverse(t_data **begin_list);
 
 #endif

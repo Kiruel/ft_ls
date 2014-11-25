@@ -24,27 +24,16 @@ t_data	*ft_sort_list(t_data **begin, char *opt)
 		tmp = *begin;
 		while (tmp->next)
 		{
-			if (opt[3] == 'r')
+			if (ft_strcmp(tmp->name, tmp->next->name) > 0)
 			{
-				if (ft_strcmp(tmp->name, tmp->next->name) < 0)
-				{
-					i = 1;
-					ft_swap_brick(tmp, begin);
-				}
-				else
-					tmp = tmp->next;				
+				i = 1;
+				ft_swap_brick(tmp, begin);
 			}
 			else
-			{
-				if (ft_strcmp(tmp->name, tmp->next->name) > 0)
-				{
-					i = 1;
-					ft_swap_brick(tmp, begin);
-				}
-				else
-					tmp = tmp->next;
-			}
+				tmp = tmp->next;
 		}
 	}
+	if (opt[3] == 'r')
+		ft_list_reverse(begin);
 	return (*begin);
 }

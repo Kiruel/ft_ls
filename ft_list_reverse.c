@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_list.c                                    :+:      :+:    :+:   */
+/*   ft_list_reverse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/23 17:05:18 by etheodor          #+#    #+#             */
-/*   Updated: 2014/11/25 09:06:48 by etheodor         ###   ########.fr       */
+/*   Created: 2014/11/25 09:13:36 by etheodor          #+#    #+#             */
+/*   Updated: 2014/11/25 09:28:19 by etheodor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "includes/ft_ls.h"
 
-void	ft_print_list(t_data *list)
+void	ft_list_reverse(t_data **begin_list)
 {
-	t_data	*tmp;
+	t_data *prev;
+	t_data *cur;
+	t_data *ret;
 
-	tmp = list;
-	while (tmp != NULL)
+	prev = NULL;
+	ret = NULL;
+	cur = *begin_list;
+	while(cur)
 	{
-		ft_putendl(tmp->name);
-		tmp = tmp->next;
+		prev = cur;
+		cur = prev->next;
+		prev->next = ret;
+		ret = prev;
 	}
+	*begin_list = ret;
 }
