@@ -20,15 +20,21 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <time.h>
+# include <pwd.h>
+# include <uuid/uuid.h>
 # include "../libft/includes/libft.h"
 # define  s_dirent struct dirent
 # define  s_stat struct stat
 
 typedef struct 	s_data
 {
-	char 			name[256];
+	char 			*name;
 	int				mtimes;
-	int 			sizes;
+	time_t			sizes;
+	int				uid;
+	gid_t			gid;
+	char			*name_owner;
+	char			*name_group;
 	struct 			s_data *next;
 }				t_data;
 

@@ -13,7 +13,6 @@
 
 t_data	*ft_addlink(t_data *list, char *str)
 {
-	int 	i;
 	t_data 	*brick;
 	t_data 	*tmp;
 	s_stat	megapoil;
@@ -21,16 +20,13 @@ t_data	*ft_addlink(t_data *list, char *str)
 	tmp = list;
 	(void)stat(str, &megapoil);
 	brick = (t_data*)malloc(sizeof(t_data));
-	brick->mtimes = (int)megapoil.st_mtime;
-	brick->sizes = (int)megapoil.st_size;
 	if (brick == 0)
 		return (NULL);
-	i = 0;
-	while (i < 256)
-	{
-		brick->name[i] = str[i];
-		i++;
-	}
+	brick->mtimes = megapoil.st_mtime;
+	brick->sizes = (int)megapoil.st_size;
+	brick->uid = (int)megapoil.st_uid;
+	brick->gid = megapoil.st_gid;
+	brick->name = str;
 	if (list == NULL)
 	{
 		brick->next = NULL;

@@ -19,10 +19,15 @@ void	ft_print_list(t_data *list, char *opt)
 	tmp = list;
 	while (tmp != NULL)
 	{
-		rettime = ctime((const time_t *)&tmp->mtimes);
-		rettime = ft_strsub(rettime, 4, 12);
 		if (opt[0] == 'l')
 		{
+			tmp->name_owner = (getpwuid((uid_t)tmp->uid))->pw_name;
+			tmp->name_group = (getgrgid(tmp->gid))->gr_name;
+			rettime = ctime((const time_t*)&tmp->mtimes);
+			rettime = ft_strsub(rettime, 4, 12);
+			ft_putstr(tmp->name_owner);
+			ft_putnbr(tmp->sizes);
+			ft_putchar(' ');
 			ft_putstr(rettime);
 			ft_putchar(' ');
 		}
