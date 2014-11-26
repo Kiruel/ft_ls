@@ -37,7 +37,8 @@ typedef struct 	s_data
 	char			*name_owner;
 	char			*name_group;
 	int				nlink;
-	mode_t			mode; 
+	mode_t			mode;
+	int				blocksize;
 	struct 			s_data *next;
 }				t_data;
 

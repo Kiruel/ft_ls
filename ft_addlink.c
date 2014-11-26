@@ -29,6 +29,7 @@ t_data	*ft_addlink(t_data *list, char *str)
 	brick->nlink = (int)megapoil.st_nlink;
 	brick->mode = megapoil.st_mode;
 	brick->name = str;
+	brick->blocksize = (int)megapoil.st_blocks;
 	if (list == NULL)
 	{
 		brick->next = NULL;

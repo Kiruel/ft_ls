@@ -31,20 +31,20 @@ void	ft_print_list(t_data *list, char *opt)
 	t_data	*tmp2;
 	char *rettime;
 	struct group *gp;
-	int link;
+	int blocksize;
 
 	tmp = list;
 	tmp2 = tmp;
-	link = 0;
+	blocksize = 0;
 	if (opt[0] == 'l')
 	{
 		ft_putstr("total ");
 		while (tmp2 != NULL)
 		{
-			link += tmp2->nlink;
+			blocksize += tmp2->blocksize;
 			tmp2 = tmp2->next;
 		}
-		ft_putnbr(link);
+		ft_putnbr(blocksize);
 		ft_putchar('\n');		
 	}
 
