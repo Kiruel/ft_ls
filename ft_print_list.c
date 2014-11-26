@@ -47,7 +47,6 @@ void	ft_print_list(t_data *list, char *opt)
 		ft_putnbr(blocksize);
 		ft_putchar('\n');		
 	}
-
 	while (tmp != NULL)
 	{
 		if (opt[0] == 'l')
@@ -62,9 +61,9 @@ void	ft_print_list(t_data *list, char *opt)
 			ft_putchar(' ');
 			ft_putstr(tmp->name_owner);
 			ft_putchar(' ');
-			ft_putstr(gp->gr_name);			
+			ft_putstr(gp->gr_name);
 			ft_putchar(' ');
-			ft_putnbr(tmp->sizes);
+			ft_align_right(tmp);
 			ft_putchar(' ');
 			ft_putstr(rettime);
 			ft_putchar(' ');

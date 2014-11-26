@@ -20,7 +20,8 @@ SOURCE = ft_ls.c \
 	ft_print_list.c \
 	ft_sort_list.c \
 	ft_swap_brick.c \
-	ft_list_reverse.c
+	ft_list_reverse.c \
+	ft_align_right.c
 
 POINTO = $(SOURCE:.c=.o)
 
