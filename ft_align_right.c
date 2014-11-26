@@ -12,15 +12,30 @@
 
 #include "includes/ft_ls.h"
 
-void	ft_align_right(int maxnbr, t_data *list)
+int		ft_patate(int n)
 {
-	t_data *tmp;
+	int i;
 
-	tmp = list;
-	while (tmp != NULL)
+	i = 0;
+	while (n)
 	{
-		
-		tmp = tmp->next;
+		n /= 10;
+		i++;
 	}
-	ft_putchar(' ');
+	return (i);
+}
+
+void	ft_align_right(int maxnbr, int size)
+{
+	int i;
+	int j;
+
+	i = ft_patate(size);
+	j = ft_patate(maxnbr);
+	j++;
+	while (i < j)
+	{
+		ft_putchar(' ');
+		i++;
+	}
 }

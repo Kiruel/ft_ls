@@ -33,9 +33,10 @@ void	ft_print_list(t_data *list, char *opt)
 	struct group *gp;
 	int blocksize;
 	int maxsize;
+	int maxlink;
 
 	tmp = list;
-	tmp2 = tmp;
+	tmp2 = list;
 	blocksize = 0;
 	if (opt[0] == 'l')
 	{
@@ -49,10 +50,14 @@ void	ft_print_list(t_data *list, char *opt)
 		ft_putchar('\n');		
 	}
 	maxsize = 0;
+	maxlink = 0;
+	tmp2 = list;
 	while (tmp2 != NULL)
 	{
-		if (tmp2->sizes > blocksize)
+		if (tmp2->sizes > maxsize)
 			maxsize = tmp2->sizes;
+		if (tmp2->nlink > maxlink)
+			maxlink = tmp2->nlink;
 		tmp2 = tmp2->next;
 	}
 	while (tmp != NULL)
@@ -65,13 +70,16 @@ void	ft_print_list(t_data *list, char *opt)
 			rettime = ft_strsub(rettime, 4, 12);
 			ft_put_permissions(tmp);
 			ft_putchar(' ');
+			ft_align_right(maxlink, tmp->nlink);
 			ft_putnbr(tmp->nlink);
 			ft_putchar(' ');
 			ft_putstr(tmp->name_owner);
 			ft_putchar(' ');
+			ft_putchar(' ');
 			ft_putstr(gp->gr_name);
 			ft_putchar(' ');
-			ft_align_right(maxsize, tmp);
+			ft_align_right(maxsize, tmp->sizes);
+			ft_putnbr(tmp->sizes);
 			ft_putchar(' ');
 			ft_putstr(rettime);
 			ft_putchar(' ');
