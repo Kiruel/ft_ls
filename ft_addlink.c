@@ -13,9 +13,9 @@
 
 t_data	*ft_addlink(t_data *list, char *str)
 {
-	t_data 	*brick;
-	t_data 	*tmp;
-	s_stat	megapoil;
+	t_data 			*brick;
+	t_data 			*tmp;
+	s_stat			megapoil;
 
 	tmp = list;
 	(void)stat(str, &megapoil);
@@ -26,6 +26,8 @@ t_data	*ft_addlink(t_data *list, char *str)
 	brick->sizes = (int)megapoil.st_size;
 	brick->uid = (int)megapoil.st_uid;
 	brick->gid = (int)megapoil.st_gid;
+	brick->nlink = (int)megapoil.st_nlink;
+	brick->mode = megapoil.st_mode;
 	brick->name = str;
 	if (list == NULL)
 	{

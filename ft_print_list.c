@@ -11,13 +11,43 @@
 /* ************************************************************************** */
 #include "includes/ft_ls.h"
 
+void *ft_put_permissions(t_data *per)
+{
+	ft_putstr((S_ISDIR(per->mode)) ? "d" : "-");
+    ft_putstr((per->mode & S_IRUSR) ? "r" : "-");
+    ft_putstr((per->mode & S_IWUSR) ? "w" : "-");
+    ft_putstr((per->mode & S_IXUSR) ? "x" : "-");
+    ft_putstr((per->mode & S_IRGRP) ? "r" : "-");
+    ft_putstr((per->mode & S_IWGRP) ? "w" : "-");
+    ft_putstr((per->mode & S_IXGRP) ? "x" : "-");
+    ft_putstr((per->mode & S_IROTH) ? "r" : "-");
+    ft_putstr((per->mode & S_IWOTH) ? "w" : "-");
+    ft_putstr((per->mode & S_IXOTH) ? "x" : "-");
+}
+
 void	ft_print_list(t_data *list, char *opt)
 {
 	t_data	*tmp;
+	t_data	*tmp2;
 	char *rettime;
 	struct group *gp;
+	int link;
 
 	tmp = list;
+	tmp2 = tmp;
+	link = 0;
+	if (opt[0] == 'l')
+	{
+		ft_putstr("total ");
+		while (tmp2 != NULL)
+		{
+			link += tmp2->nlink;
+			tmp2 = tmp2->next;
+		}
+		ft_putnbr(link);
+		ft_putchar('\n');		
+	}
+
 	while (tmp != NULL)
 	{
 		if (opt[0] == 'l')
@@ -26,8 +56,14 @@ void	ft_print_list(t_data *list, char *opt)
 			gp = getgrgid((gid_t)tmp->gid);
 			rettime = ctime((const time_t*)&tmp->mtimes);
 			rettime = ft_strsub(rettime, 4, 12);
+			ft_put_permissions(tmp);
+			ft_putchar(' ');
+			ft_putnbr(tmp->nlink);
+			ft_putchar(' ');
 			ft_putstr(tmp->name_owner);
-			ft_putstr(gp->gr_name);
+			ft_putchar(' ');
+			ft_putstr(gp->gr_name);			
+			ft_putchar(' ');
 			ft_putnbr(tmp->sizes);
 			ft_putchar(' ');
 			ft_putstr(rettime);

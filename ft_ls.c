@@ -23,8 +23,6 @@ void	ft_ls(char *opt)
 	list = NULL;
 	while ((poil = readdir(s_dir)) != NULL)
 	{
-/*		if (opt[0] == 'l')
-			list = ft_addlink_time(list, megapoil);*/
 		if (opt[2] == 'a')
 			list = ft_addlink(list, poil->d_name);
 		if (opt[2] != 'a')

@@ -36,6 +36,8 @@ typedef struct 	s_data
 	int				gid;
 	char			*name_owner;
 	char			*name_group;
+	int				nlink;
+	mode_t			mode; 
 	struct 			s_data *next;
 }				t_data;
 
