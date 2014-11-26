@@ -12,7 +12,15 @@
 
 #include "includes/ft_ls.h"
 
-void	ft_align_right(t_data *align)
+void	ft_align_right(int maxnbr, t_data *list)
 {
-	ft_putnbr(align->sizes);
+	t_data *tmp;
+
+	tmp = list;
+	while (tmp != NULL)
+	{
+		
+		tmp = tmp->next;
+	}
+	ft_putchar(' ');
 }

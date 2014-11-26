@@ -32,6 +32,7 @@ void	ft_print_list(t_data *list, char *opt)
 	char *rettime;
 	struct group *gp;
 	int blocksize;
+	int maxsize;
 
 	tmp = list;
 	tmp2 = tmp;
@@ -46,6 +47,13 @@ void	ft_print_list(t_data *list, char *opt)
 		}
 		ft_putnbr(blocksize);
 		ft_putchar('\n');		
+	}
+	maxsize = 0;
+	while (tmp2 != NULL)
+	{
+		if (tmp2->sizes > blocksize)
+			maxsize = tmp2->sizes;
+		tmp2 = tmp2->next;
 	}
 	while (tmp != NULL)
 	{
@@ -63,7 +71,7 @@ void	ft_print_list(t_data *list, char *opt)
 			ft_putchar(' ');
 			ft_putstr(gp->gr_name);
 			ft_putchar(' ');
-			ft_align_right(tmp);
+			ft_align_right(maxsize, tmp);
 			ft_putchar(' ');
 			ft_putstr(rettime);
 			ft_putchar(' ');
