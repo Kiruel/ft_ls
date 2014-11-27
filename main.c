@@ -27,8 +27,11 @@ char    *ft_find_path(int ac, char **av)
             i++;
         j++;
     }
-    path = av[i];
-    // ft_putstr(path);
+    if (av[i] != 0)
+    {
+        path = av[i];
+        return (path);
+    }
     return (path);
 }
 
