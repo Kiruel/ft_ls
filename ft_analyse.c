@@ -1,43 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_align_right.c                                   :+:      :+:    :+:   */
+/*   ft_analyse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/26 11:05:36 by etheodor          #+#    #+#             */
-/*   Updated: 2014/11/27 09:39:02 by etheodor         ###   ########.fr       */
+/*   Created: 2014/11/27 11:23:37 by etheodor          #+#    #+#             */
+/*   Updated: 2014/11/27 11:23:38 by etheodor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_ls.h"
 
-int		ft_patate(int n)
+DIR		*ft_analyse(int ac, char **av, DIR *s_dir)
 {
-	int i;
+	t_data *tmp;
 
-	i = 0;
-	while (n)
+/*	while (ac != 0)
 	{
-		n /= 10;
-		i++;
-	}
-	return (i);
-}
-
-void	ft_align_right(int maxnbr, int size)
-{
-	int i;
-	int j;
-
-	i = ft_patate(size);
-	j = ft_patate(maxnbr);
-	j++;
-	if (i == 0)
-		i++;
-	while (i <= j)
-	{
-		ft_putchar(' ');
-		i++;
-	}
+		
+	}*/
+	// if (ac == 2 && )
+    // if (ac == 1)
+        s_dir = opendir(".");
+/*    else
+        s_dir = opendir(av[2]);*/
+    return (s_dir);
 }

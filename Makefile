@@ -22,6 +22,7 @@ SOURCE = ft_ls.c \
 	ft_swap_brick.c \
 	ft_list_reverse.c \
 	ft_align_right.c \
+	ft_analyse.c
 
 POINTO = $(SOURCE:.c=.o)
 

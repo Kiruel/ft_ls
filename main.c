@@ -15,30 +15,34 @@
 int	main(int ac, char **av)
 {
 	int		i;
+    int     j;
 	char	opt[5];
-    DIR         *s_dir;
+    DIR     *s_dir;
 
-    if (ac == 2 || ac == 1)
-        s_dir = opendir(".");
-    else
-        s_dir = opendir(av[2]);
+    s_dir = ft_analyse(ac, av, s_dir);
 	i = -1;
 	while (opt[i++] != '\0')
 		opt[i] = '\0';
 	i = 0;
-	while (ac > 1 && av[1][i] != '\0' && av[1][0] == '-')
+    j = 1;
+	while (ac > 1 && j < ac)
 	{
-		if (av[1][i] == 'l')
-			opt[0] = 'l';
-		if (av[1][i] == 'R')
-			opt[1] = 'R';
-		if (av[1][i] == 'a')
-			opt[2] = 'a';
-		if (av[1][i] == 'r')
-			opt[3] = 'r';
-		if (av[1][i] == 't')
-			opt[4] = 't';
-		i++;
+        i = 0;
+        while (av[j][i] != '\0' && av[j][0] == '-')
+        {
+            if (av[j][i] == 'l')
+                opt[0] = 'l';
+            if (av[j][i] == 'R')
+                opt[1] = 'R';
+            if (av[j][i] == 'a')
+                opt[2] = 'a';
+            if (av[j][i] == 'r')
+                opt[3] = 'r';
+            if (av[j][i] == 't')
+                opt[4] = 't';
+            i++;
+        }
+		j++;
 	}
 	ft_ls(opt, s_dir);
 	return (0);
