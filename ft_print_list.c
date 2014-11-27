@@ -67,13 +67,11 @@ void	ft_print_l(t_data *tmp, int maxsize, int maxlink)
 
 void	ft_print_list(t_data *list, char *opt)
 {
-	t_data	*tmp;
 	t_data	*tmp2;
 	int		blocksize;
 	int		maxsize;
 	int		maxlink;
 
-	tmp = list;
 	tmp2 = list;
 	blocksize = 0;
 	if (opt[0] == 'l')
@@ -98,11 +96,12 @@ void	ft_print_list(t_data *list, char *opt)
 			maxlink = tmp2->nlink;
 		tmp2 = tmp2->next;
 	}
-	while (tmp != NULL)
+	tmp2 = list;
+	while (tmp2 != NULL)
 	{
 		if (opt[0] == 'l')
-			ft_print_l(tmp, maxsize, maxlink);
-		ft_putendl(tmp->name);
-		tmp = tmp->next;
+			ft_print_l(tmp2, maxsize, maxlink);
+		ft_putendl(tmp2->name);
+		tmp2 = tmp2->next;
 	}
 }

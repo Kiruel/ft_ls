@@ -32,7 +32,6 @@ void	ft_align_right(int maxnbr, int size)
 
 	i = ft_patate(size);
 	j = ft_patate(maxnbr);
-	j++;
 	if (i == 0)
 		i++;
 	while (i <= j)

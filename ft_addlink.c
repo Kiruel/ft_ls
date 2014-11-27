@@ -12,14 +12,26 @@
 
 #include "includes/ft_ls.h"
 
-t_data	*ft_addlink(t_data *list, char *str)
+char	*ft_mega_join(char *path, char *backslash, char *name)
+{
+	char *tmp;
+	char *tmp2;
+
+	tmp = ft_strjoin(path, backslash);
+	tmp2 = ft_strjoin(tmp, name);
+	free(tmp);
+	return (tmp2);
+}
+
+t_data	*ft_addlink(t_data *list, char *path, char *str)
 {
 	t_data	*brick;
 	t_data	*tmp;
 	S_STAT	megapoil;
 
 	tmp = list;
-	(void)stat(str, &megapoil);
+	path = ft_mega_join(path, "/", str);
+	(void)stat(path, &megapoil);
 	brick = (t_data*)malloc(sizeof(t_data));
 	if (brick == 0)
 		return (NULL);

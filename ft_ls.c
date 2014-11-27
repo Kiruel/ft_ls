@@ -12,7 +12,7 @@
 
 #include "includes/ft_ls.h"
 
-void	ft_ls(char *opt, DIR *s_dir)
+void	ft_ls(char *opt, DIR *s_dir, char *path)
 {
 	S_DIRENT	*poil;
 	t_data 		*list;
@@ -21,11 +21,11 @@ void	ft_ls(char *opt, DIR *s_dir)
 	while ((poil = readdir(s_dir)) != NULL)
 	{
 		if (opt[2] == 'a')
-			list = ft_addlink(list, poil->d_name);
+			list = ft_addlink(list, path, poil->d_name);
 		if (opt[2] != 'a')
 		{
 			if (poil->d_name[0] != '.')
-				list = ft_addlink(list, poil->d_name);
+				list = ft_addlink(list, path, poil->d_name);
 		}
 	}
 	list = ft_sort_list(&list, opt);

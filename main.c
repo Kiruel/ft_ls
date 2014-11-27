@@ -12,12 +12,33 @@
 
 #include "includes/ft_ls.h"
 
+char    *ft_find_path(int ac, char **av)
+{
+    char *path;
+    int j;
+    int i;
+
+    path = ".";
+    j = 1;
+    i = 1;
+    while (av[j] != '\0')
+    {
+        if (av[j][0] == '-')
+            i++;
+        j++;
+    }
+    path = av[i];
+    // ft_putstr(path);
+    return (path);
+}
+
 int	main(int ac, char **av)
 {
 	int		i;
     int     j;
 	char	opt[5];
     DIR     *s_dir;
+    char *path;
 
     s_dir = ft_analyse(ac, av, s_dir);
 	i = -1;
@@ -44,6 +65,7 @@ int	main(int ac, char **av)
         }
 		j++;
 	}
-	ft_ls(opt, s_dir);
+    path = ft_find_path(ac, av);
+	ft_ls(opt, s_dir, path);
 	return (0);
 }

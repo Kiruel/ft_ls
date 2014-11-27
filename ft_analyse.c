@@ -15,15 +15,15 @@
 DIR		*ft_analyse(int ac, char **av, DIR *s_dir)
 {
 	t_data *tmp;
+	int j;
 
-/*	while (ac != 0)
+	s_dir = opendir(".");
+	j = 1;
+	while (ac > 1 && j < ac)
 	{
-		
-	}*/
-	// if (ac == 2 && )
-    // if (ac == 1)
-        s_dir = opendir(".");
-/*    else
-        s_dir = opendir(av[2]);*/
+		if (av[j][0] != '-')
+			s_dir = opendir(av[j]);
+		j++;
+	}
     return (s_dir);
 }
