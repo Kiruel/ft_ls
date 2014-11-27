@@ -12,13 +12,10 @@
 
 #include "includes/ft_ls.h"
 
-void	ft_ls(char *opt)
+void	ft_ls(char *opt, DIR *s_dir)
 {
-	DIR 		*s_dir;
-	s_dirent	*poil;
+	S_DIRENT	*poil;
 	t_data 		*list;
-
-	s_dir = opendir(".");
 
 	list = NULL;
 	while ((poil = readdir(s_dir)) != NULL)

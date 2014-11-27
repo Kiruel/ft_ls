@@ -6,16 +6,17 @@
 /*   By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/23 17:06:12 by etheodor          #+#    #+#             */
-/*   Updated: 2014/11/23 17:06:13 by etheodor         ###   ########.fr       */
+/*   Updated: 2014/11/27 09:38:16 by etheodor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "includes/ft_ls.h"
 
 t_data	*ft_addlink(t_data *list, char *str)
 {
-	t_data 			*brick;
-	t_data 			*tmp;
-	s_stat			megapoil;
+	t_data	*brick;
+	t_data	*tmp;
+	S_STAT	megapoil;
 
 	tmp = list;
 	(void)stat(str, &megapoil);

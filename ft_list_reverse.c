@@ -6,7 +6,7 @@
 /*   By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/25 09:13:36 by etheodor          #+#    #+#             */
-/*   Updated: 2014/11/25 09:28:19 by etheodor         ###   ########.fr       */
+/*   Updated: 2014/11/27 09:37:21 by etheodor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_list_reverse(t_data **begin_list)
 	prev = NULL;
 	ret = NULL;
 	cur = *begin_list;
-	while(cur)
+	while (cur)
 	{
 		prev = cur;
 		cur = prev->next;

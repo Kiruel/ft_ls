@@ -6,7 +6,7 @@
 /*   By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/23 17:18:26 by etheodor          #+#    #+#             */
-/*   Updated: 2014/11/23 17:18:41 by etheodor         ###   ########.fr       */
+/*   Updated: 2014/11/27 09:28:16 by etheodor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_data	*ft_sort_list(t_data **begin, char *opt)
 {
-	t_data *tmp;
-	int i;
+	t_data	*tmp;
+	int		i;
 
 	i = 1;
 	while (i)
@@ -42,7 +42,7 @@ t_data	*ft_sort_list(t_data **begin, char *opt)
 					ft_swap_brick(tmp, begin);
 				}
 				else
-					tmp = tmp->next;				
+					tmp = tmp->next;
 			}
 		}
 	}
