@@ -12,12 +12,34 @@
 
 #include "includes/ft_ls.h"
 
-DIR		*ft_analyse(int ac, char **av, DIR *s_dir)
+DIR		*ft_analyse(int ac, char **av, DIR *s_dir, char *path, char * opt)
 {
 	t_data *tmp;
-	int j;
+	int 	j;
+	t_data *list;
 
-	s_dir = opendir(".");
+	list = NULL;
+	s_dir = opendir(path);
+	if (s_dir == NULL)
+	{
+		if (errno == ENOTDIR)
+		{
+			list = ft_addlink(list, ".", path);
+			if (opt[0] == 'l')
+			{
+				ft_print_l(list, list);
+				ft_putendl(path);
+			}
+			else
+			{
+				ft_putstr(path);
+				ft_putchar('\n');
+			}
+		}
+		else
+			perror("");
+		exit(1);
+	}
 	j = 1;
 	while (ac > 1 && j < ac)
 	{

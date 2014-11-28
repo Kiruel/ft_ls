@@ -31,7 +31,7 @@ t_data	*ft_addlink(t_data *list, char *path, char *str)
 
 	tmp = list;
 	path = ft_mega_join(path, "/", str);
-	(void)stat(path, &megapoil);
+	(void)lstat(path, &megapoil);
 	brick = (t_data*)malloc(sizeof(t_data));
 	if (brick == 0)
 		return (NULL);

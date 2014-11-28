@@ -41,9 +41,7 @@ int	main(int ac, char **av)
     int     j;
 	char	opt[5];
     DIR     *s_dir;
-    char *path;
 
-    s_dir = ft_analyse(ac, av, s_dir);
 	i = -1;
 	while (opt[i++] != '\0')
 		opt[i] = '\0';
@@ -68,7 +66,7 @@ int	main(int ac, char **av)
         }
 		j++;
 	}
-    path = ft_find_path(ac, av);
-	ft_ls(opt, s_dir, path);
+    s_dir = ft_analyse(ac, av, s_dir, ft_find_path(ac, av), opt);
+	ft_ls(opt, s_dir, ft_find_path(ac, av));
 	return (0);
 }
