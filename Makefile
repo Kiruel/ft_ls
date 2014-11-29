@@ -22,7 +22,6 @@ SOURCE = ft_ls.c \
 	ft_swap_brick.c \
 	ft_list_reverse.c \
 	ft_align_right.c \
-	ft_analyse.c \
 	ft_print_l.c \
 	ft_put_permissions.c
 
@@ -34,12 +33,12 @@ $(NAME):
 	@make -C libft/ fclean
 	@make -C libft
 	@make -C libft/ clean
-	@gcc -c $(SOURCE) -L libft/ -lft
+	@gcc -c $(SOURCE) 
 	@gcc -o $(NAME) $(POINTO) -L libft/ -lft -I includes/
 	@make clean
 
 test:
-	@gcc -c $(SOURCE) -L libft/ -lft
+	@gcc -c $(SOURCE) 
 	@gcc -o $(NAME) $(POINTO) -L libft/ -lft -I includes/
 	@make clean
 

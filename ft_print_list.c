@@ -36,9 +36,7 @@ void	ft_print_list(t_data *list, char *opt)
 	tmp = list;
 	while (tmp2 != NULL)
 	{
-		if (opt[0] == 'l')
-			ft_print_l(tmp2, tmp);
-		ft_putendl(tmp2->name);
+		ft_print_l(tmp2, tmp, opt);
 		tmp2 = tmp2->next;
 	}
 }

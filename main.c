@@ -12,13 +12,12 @@
 
 #include "includes/ft_ls.h"
 
-char    *ft_find_path(int ac, char **av)
+char    **ft_find_path(int ac, char **av)
 {
-    char *path;
+    char **path;
     int j;
     int i;
 
-    path = ".";
     j = 1;
     i = 1;
     while (av[j] != '\0')
@@ -27,11 +26,18 @@ char    *ft_find_path(int ac, char **av)
             i++;
         j++;
     }
-    if (av[i] != 0)
+    j = i;
+    while (av[j] != '\0')
+        j++;
+    path = (char**)malloc(sizeof(char*) * j + 1);
+    j = 0;
+    while (av[i] != '\0')
     {
-        path = av[i];
-        return (path);
+        path[j] = av[i];
+        i++;
+        j++;
     }
+    path[j] = '\0';
     return (path);
 }
 
@@ -40,7 +46,7 @@ int	main(int ac, char **av)
 	int		i;
     int     j;
 	char	opt[5];
-    DIR     *s_dir;
+    char    **path;
 
 	i = -1;
 	while (opt[i++] != '\0')
@@ -66,7 +72,35 @@ int	main(int ac, char **av)
         }
 		j++;
 	}
-    s_dir = ft_analyse(ac, av, s_dir, ft_find_path(ac, av), opt);
-	ft_ls(opt, s_dir, ft_find_path(ac, av));
+    i = 0;
+    j = 0;
+    path = ft_find_path(ac, av);
+    while (path[j] != '\0')
+    {
+        if (ft_strcmp(path[j], "."))
+            i++;
+        j++;
+    }
+    if (i > 1)
+        i = 1;
+    j = 0;
+    j = 0;
+    while (path[j] != 0)
+        j++;
+    if (j == 0)
+    {
+        ft_ls(opt, ".");
+    }
+    else
+    {
+        i = 0;
+        while (path[i] != '\0')
+        {
+            // ft_ls(opt, path[i]);
+            if (ft_ls(opt, path[i]) == -1)
+                return (0);
+            i++;
+        }
+    }
 	return (0);
 }

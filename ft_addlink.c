@@ -23,13 +23,11 @@ char	*ft_mega_join(char *path, char *backslash, char *name)
 	return (tmp2);
 }
 
-t_data	*ft_addlink(t_data *list, char *path, char *str)
+t_data	*ft_addlink(char *path, char *str)
 {
 	t_data	*brick;
-	t_data	*tmp;
 	S_STAT	megapoil;
 
-	tmp = list;
 	path = ft_mega_join(path, "/", str);
 	(void)lstat(path, &megapoil);
 	brick = (t_data*)malloc(sizeof(t_data));
@@ -43,14 +41,7 @@ t_data	*ft_addlink(t_data *list, char *path, char *str)
 	brick->mode = megapoil.st_mode;
 	brick->name = str;
 	brick->blocksize = (int)megapoil.st_blocks;
-	if (list == NULL)
-	{
-		brick->next = NULL;
-		return (brick);
-	}
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	tmp->next = brick;
 	brick->next = NULL;
-	return (list);
+	free(path);
+	return (brick);
 }

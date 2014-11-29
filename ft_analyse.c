@@ -12,11 +12,12 @@
 
 #include "includes/ft_ls.h"
 
-DIR		*ft_analyse(int ac, char **av, DIR *s_dir, char *path, char * opt)
+DIR		*ft_analyse(int ac, char **av, char *path, char *opt)
 {
 	t_data *tmp;
 	int 	j;
 	t_data *list;
+	DIR *s_dir;
 
 	list = NULL;
 	s_dir = opendir(path);

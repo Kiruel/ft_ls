@@ -42,15 +42,14 @@ typedef struct		s_data
 	struct s_data	*next;
 }					t_data;
 
-void				*ft_put_permissions(t_data *per);
-void				ft_print_l(t_data *tmp, t_data *list);
-void				ft_ls(char *opt, DIR *s_dir, char *path);
-t_data				*ft_addlink(t_data *list, char *path, char *str);
+void				ft_put_permissions(t_data *per);
+void				ft_print_l(t_data *tmp, t_data *list, char *opt);
+int					ft_ls(char *opt, char *path);
+t_data				*ft_addlink(char *path, char *str);
 void				ft_print_list(t_data *list, char *opt);
 t_data				*ft_sort_list(t_data **begin, char *opt);
 void				ft_swap_brick(t_data *tmp, t_data **begin);
 void				ft_list_reverse(t_data **begin_list);
 void				ft_align_right(int maxnbr, int size);
-DIR					*ft_analyse(int ac, char **av, DIR *s_dir, char *path, char *opt);
 
 #endif

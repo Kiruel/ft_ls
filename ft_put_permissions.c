@@ -12,7 +12,7 @@
 
 #include "includes/ft_ls.h"
 
-void	*ft_put_permissions(t_data *per)
+void	ft_put_permissions(t_data *per)
 {
 	if (S_ISBLK(per->mode))
 		ft_putchar('b');
