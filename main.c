@@ -96,7 +96,6 @@ int	main(int ac, char **av)
         i = 0;
         while (path[i] != '\0')
         {
-            // ft_ls(opt, path[i]);
             if (ft_ls(opt, path[i]) == -1)
                 return (0);
             i++;
