@@ -30,3 +30,10 @@ ________________________________________________________________________________
 -t :
    Trier le contenu des répertoires en fonction de la date et non pas en ordre 
 alphabétique. Les fichiers les plus récents sont présentés en premier.
+
+
+Idee:
+
+-Trier par ordre ascii les chemins (path).
+
+-Faire la recursivite.
