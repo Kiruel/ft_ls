@@ -12,9 +12,10 @@
 
 #include "includes/ft_ls.h"
 
-char    **ft_find_path(int ac, char **av)
+char    **ft_find_path(int ac, char **av, char *opt)
 {
     char **path;
+    char *tmp;
     int j;
     int i;
 
@@ -38,6 +39,25 @@ char    **ft_find_path(int ac, char **av)
         j++;
     }
     path[j] = '\0';
+    j = 0;
+    while (path[j] != 0)
+        j++;
+    while (j)
+    {
+        i = 0;
+        while (path[i] != '\0' && path[i + 1] != 0)
+        {
+            if (ft_strcmp(path[i], path[i + 1]) > 0)
+            {
+                tmp = path[i];
+                path[i] = path[i + 1];
+                path[i + 1] = tmp;
+            }
+            i++;
+        }
+        j--;
+    }
+
     return (path);
 }
 
@@ -74,7 +94,7 @@ int	main(int ac, char **av)
 	}
     i = 0;
     j = 0;
-    path = ft_find_path(ac, av);
+    path = ft_find_path(ac, av, opt);
     while (path[j] != '\0')
     {
         if (ft_strcmp(path[j], "."))
