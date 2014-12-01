@@ -23,7 +23,8 @@ SOURCE = ft_ls.c \
 	ft_list_reverse.c \
 	ft_align_right.c \
 	ft_print_l.c \
-	ft_put_permissions.c
+	ft_count_space.c \
+	ft_add_space_owner.c
 
 POINTO = $(SOURCE:.c=.o)
 

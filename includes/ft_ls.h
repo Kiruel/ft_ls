@@ -36,14 +36,13 @@ typedef struct		s_data
 	int				gid;
 	char			*name_owner;
 	char			*name_group;
-	int				nlink;
+	nlink_t			nlink;
 	mode_t			mode;
 	int				blocksize;
 	struct s_data	*next;
 }					t_data;
 
-void				ft_put_permissions(t_data *per);
-void				ft_print_l(t_data *tmp, t_data *list, char *opt);
+void				ft_print_l(t_data *tmp, t_data *list, char *opt, int *size);
 int					ft_ls(char *opt, char *path);
 t_data				*ft_addlink(char *path, char *str);
 void				ft_print_list(t_data *list, char *opt);
@@ -51,5 +50,7 @@ t_data				*ft_sort_list(t_data **begin, char *opt);
 void				ft_swap_brick(t_data *tmp, t_data **begin);
 void				ft_list_reverse(t_data **begin_list);
 void				ft_align_right(int maxnbr, int size);
+int					*ft_count_space(t_data *list);
+void				ft_add_space_owner(int max_size, int size_owner);
 
 #endif

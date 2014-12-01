@@ -27,19 +27,27 @@ t_data	*ft_addlink(char *path, char *str)
 {
 	t_data	*brick;
 	S_STAT	megapoil;
+	struct group	*gp;
+	struct passwd	*pd;
 
 	path = ft_mega_join(path, "/", str);
 	(void)lstat(path, &megapoil);
 	brick = (t_data*)malloc(sizeof(t_data));
-	if (brick == 0)
-		return (NULL);
-	brick->mtimes = megapoil.st_mtime;
-	brick->sizes = (int)megapoil.st_size;
 	brick->uid = (int)megapoil.st_uid;
 	brick->gid = (int)megapoil.st_gid;
+	if (brick == 0)
+		return (NULL);
+	if (pd = getpwuid(brick->uid))
+		brick->name_owner = pd->pw_name;
+	else
+		brick->name_owner = ft_itoa(brick->uid);
+	gp = getgrgid((gid_t)brick->gid);
+	brick->name_group = gp->gr_name;
+	brick->mtimes = megapoil.st_mtime;
+	brick->sizes = (int)megapoil.st_size;
 	brick->nlink = (int)megapoil.st_nlink;
 	brick->mode = megapoil.st_mode;
-	brick->name = str;
+	brick->name = ft_strdup(str);
 	brick->blocksize = (int)megapoil.st_blocks;
 	brick->next = NULL;
 	free(path);

@@ -1,46 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_list.c                                    :+:      :+:    :+:   */
+/*   ft_count_space.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/23 17:05:18 by etheodor          #+#    #+#             */
-/*   Updated: 2014/11/27 09:33:22 by etheodor         ###   ########.fr       */
+/*   Created: 2014/12/01 17:11:48 by etheodor          #+#    #+#             */
+/*   Updated: 2014/12/01 17:11:49 by etheodor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_ls.h"
 
-
-void	ft_print_list(t_data *list, char *opt)
+int		*ft_count_space(t_data *list)
 {
-	t_data	*tmp2;
-	int		blocksize;
-	t_data 	*tmp;
-	int 	*size;
+	t_data			*tmp2;
+	int				*size;
 
-	size = ft_count_space(list);
+	size = (int*)malloc(sizeof(int) * 3);
 	tmp2 = list;
-	ft_putnbr(size[2]);
-	blocksize = 0;
-	if (opt[0] == 'l')
-	{
-		ft_putstr("total ");
-		while (tmp2 != NULL)
-		{
-			blocksize += tmp2->blocksize;
-			tmp2 = tmp2->next;
-		}
-		ft_putnbr(blocksize);
-		ft_putchar('\n');
-	}
-	tmp2 = list;
-	tmp = list;
+	size[0] = 0;
+	size[1] = 0;
+	size[2] = 0;
 	while (tmp2 != NULL)
 	{
-		ft_print_l(tmp2, tmp, opt, size);
+		if (tmp2->sizes > size[0])
+			size[0] = tmp2->sizes;
+		if (tmp2->nlink > size[1])
+			size[1] = tmp2->nlink;
+		if (ft_strlen(tmp2->name_owner) > size[2])
+			size[2] = ft_strlen(tmp2->name_owner);
 		tmp2 = tmp2->next;
 	}
-	free(size);
+	return (size);
 }

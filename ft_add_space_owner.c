@@ -1,43 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_align_right.c                                   :+:      :+:    :+:   */
+/*   ft_add_space_owner.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/26 11:05:36 by etheodor          #+#    #+#             */
-/*   Updated: 2014/11/27 09:39:02 by etheodor         ###   ########.fr       */
+/*   Created: 2014/12/01 17:46:25 by etheodor          #+#    #+#             */
+/*   Updated: 2014/12/01 17:46:33 by etheodor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_ls.h"
 
-int		ft_patate(int n)
+void	ft_add_space_owner(int max_size, int size_owner)
 {
-	int i;
-
-	i = 0;
-	while (n)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
-}
-
-void	ft_align_right(int maxnbr, int size)
-{
-	int i;
 	int j;
 
-	i = ft_patate(size);
-	j = ft_patate(maxnbr);
-	if (i == 0)
-		i++;
-	ft_putchar(' ');
-	while (i <= j)
-	{
-		ft_putchar(' ');
-		i++;
-	}
+	j = size_owner;
+	// if (max_size == size_owner)
+	// {
+	// 	ft_putchar(' ');
+	// 	ft_putchar(' ');
+	// }
 }
