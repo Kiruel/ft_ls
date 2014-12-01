@@ -30,7 +30,7 @@
 typedef struct		s_data
 {
 	char			*name;
-	int				mtimes;
+	time_t			mtimes;
 	time_t			sizes;
 	int				uid;
 	int				gid;

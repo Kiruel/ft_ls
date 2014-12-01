@@ -16,7 +16,7 @@ void	ft_coffee(t_data *tmp, struct group *gp, int maxsize, int maxlink)
 {
 	char			*rettime;
 
-	rettime = ctime((const time_t*)&tmp->mtimes);
+	rettime = ctime(&tmp->mtimes);
 	rettime = ft_strsub(rettime, 4, 12);
 	ft_put_permissions(tmp);
 	ft_putchar(' ');

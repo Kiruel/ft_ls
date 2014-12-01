@@ -12,10 +12,48 @@
 
 #include "includes/ft_ls.h"
 
+char    **ft_swap_path(char *opt, char **path)
+{
+    int     i;
+    int     j;
+    char    *tmp;
+
+    j = 0;
+    while (path[j] != 0)
+        j++;
+    while (j)
+    {
+        i = 0;
+        while (path[i] != '\0' && path[i + 1] != 0)
+        {
+            if (opt[3] == 'r')
+            {  
+                if (ft_strcmp(path[i], path[i + 1]) < 0)
+                {
+                    tmp = path[i];
+                    path[i] = path[i + 1];
+                    path[i + 1] = tmp;
+                }
+            }
+            else
+            {
+                if (ft_strcmp(path[i], path[i + 1]) > 0)
+                {
+                    tmp = path[i];
+                    path[i] = path[i + 1];
+                    path[i + 1] = tmp;
+                }
+            }
+            i++;
+        }
+        j--;
+    }
+    return (path);
+}
+
 char    **ft_find_path(int ac, char **av, char *opt)
 {
     char **path;
-    char *tmp;
     int j;
     int i;
 
@@ -39,25 +77,7 @@ char    **ft_find_path(int ac, char **av, char *opt)
         j++;
     }
     path[j] = '\0';
-    j = 0;
-    while (path[j] != 0)
-        j++;
-    while (j)
-    {
-        i = 0;
-        while (path[i] != '\0' && path[i + 1] != 0)
-        {
-            if (ft_strcmp(path[i], path[i + 1]) > 0)
-            {
-                tmp = path[i];
-                path[i] = path[i + 1];
-                path[i + 1] = tmp;
-            }
-            i++;
-        }
-        j--;
-    }
-
+    path = ft_swap_path(opt, path);
     return (path);
 }
 
