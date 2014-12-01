@@ -51,7 +51,7 @@ void	ft_coffee(t_data *tmp, int *size)
 	ft_putchar(' ');
 	ft_putstr(tmp->name_owner);
 	ft_add_space_owner(size[2], ft_strlen(tmp->name_owner));
-	ft_putnbr(tmp->gid);
+	ft_putstr(tmp->name_group);
 	ft_align_right(size[0], tmp->sizes);
 	ft_putnbr(tmp->sizes);
 	ft_putchar(' ');

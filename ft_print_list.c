@@ -22,7 +22,6 @@ void	ft_print_list(t_data *list, char *opt)
 
 	size = ft_count_space(list);
 	tmp2 = list;
-	ft_putnbr(size[2]);
 	blocksize = 0;
 	if (opt[0] == 'l')
 	{

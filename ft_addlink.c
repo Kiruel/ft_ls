@@ -28,7 +28,7 @@ t_data	*ft_addlink(char *path, char *str)
 	t_data	*brick;
 	S_STAT	megapoil;
 	struct group	*gp;
-	struct passwd	*pd;
+	struct passwd	*pwd;
 
 	path = ft_mega_join(path, "/", str);
 	(void)lstat(path, &megapoil);
@@ -37,8 +37,8 @@ t_data	*ft_addlink(char *path, char *str)
 	brick->gid = (int)megapoil.st_gid;
 	if (brick == 0)
 		return (NULL);
-	if (pd = getpwuid(brick->uid))
-		brick->name_owner = pd->pw_name;
+	if ((pwd = getpwuid(brick->uid)))
+		brick->name_owner = pwd->pw_name;
 	else
 		brick->name_owner = ft_itoa(brick->uid);
 	gp = getgrgid((gid_t)brick->gid);

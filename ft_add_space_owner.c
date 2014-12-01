@@ -16,10 +16,15 @@ void	ft_add_space_owner(int max_size, int size_owner)
 {
 	int j;
 
-	j = size_owner;
-	// if (max_size == size_owner)
-	// {
-	// 	ft_putchar(' ');
-	// 	ft_putchar(' ');
-	// }
+	j = size_owner - 2;
+	if (max_size == size_owner)
+	{
+		ft_putchar(' ');
+		ft_putchar(' ');
+	}
+	while (j < max_size && max_size != size_owner)
+	{
+		ft_putchar(' ');
+		j++;
+	}
 }
