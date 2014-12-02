@@ -45,7 +45,7 @@ t_data	*ft_addlink(char *path, char *str)
 	brick->name_group = gp->gr_name;
 	brick->mtimes = megapoil.st_mtime;
 	brick->sizes = (int)megapoil.st_size;
-	brick->nlink = (int)megapoil.st_nlink;
+	brick->nlink = megapoil.st_nlink;
 	brick->mode = megapoil.st_mode;
 	brick->name = ft_strdup(str);
 	brick->blocksize = (int)megapoil.st_blocks;

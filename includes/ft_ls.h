@@ -50,7 +50,7 @@ t_data				*ft_sort_list(t_data **begin, char *opt);
 void				ft_swap_brick(t_data *tmp, t_data **begin);
 void				ft_list_reverse(t_data **begin_list);
 void				ft_align_right(int maxnbr, int size);
-int					*ft_count_space(t_data *list);
+int					*ft_count_space(t_data *list, char *opt);
 void				ft_add_space_owner(int max_size, int size_owner);
 
 #endif

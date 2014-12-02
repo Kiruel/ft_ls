@@ -46,15 +46,12 @@ void	ft_coffee(t_data *tmp, int *size)
 	rettime = ctime(&tmp->mtimes);
 	rettime = ft_strsub(rettime, 4, 12);
 	ft_put_permissions(tmp);
-	ft_putchar(' ');
 	ft_align_right(size[1], tmp->nlink);
 	ft_putnbr(tmp->nlink);
 	ft_putchar(' ');
 	ft_putstr(tmp->name_owner);
 	ft_add_space_owner(size[2], ft_strlen(tmp->name_owner));
 	ft_putstr(tmp->name_group);
-	ft_putchar(' ');
-	ft_putchar(' ');
 	ft_align_right(size[0], tmp->sizes);
 	ft_putnbr(tmp->sizes);
 	ft_putchar(' ');

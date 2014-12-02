@@ -34,7 +34,9 @@ void	ft_align_right(int maxnbr, int size)
 	j = ft_patate(maxnbr);
 	if (i == 0)
 		i++;
-	while (i < j && maxnbr != size)
+	ft_putchar(' ');
+	ft_putchar(' ');
+	while (i < j)
 	{
 		ft_putchar(' ');
 		i++;
