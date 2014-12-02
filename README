@@ -34,6 +34,8 @@ alphabétique. Les fichiers les plus récents sont présentés en premier.
 
 Idee:
 
--Trier par ordre ascii les chemins (path).
+-Trier par ordre ascii les chemins (path). (done)
+
+-Utiliser readlink pour afficher les fichiers links.
 
 -Faire la recursivite.
