@@ -60,7 +60,7 @@ int		ft_create_chain(char *path, t_data **list, char *opt)
 	return (0);
 }
 
-int		ft_ls(char *opt, char *path)
+int		ft_ls(char *opt, char *path, char **path_str)
 {
 	S_DIRENT	*poil;
 	t_data 		*list;
@@ -68,7 +68,7 @@ int		ft_ls(char *opt, char *path)
 	if (ft_create_chain(path, &list, opt) == -1)
 		return (-1);
 	list = ft_sort_list(&list, opt);
-	ft_print_list(list, opt);
+	ft_print_list(list, opt, path, path_str);
 	ft_free_list(&list);
 	return (0);
 }

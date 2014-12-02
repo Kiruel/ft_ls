@@ -13,16 +13,24 @@
 #include "includes/ft_ls.h"
 
 
-void	ft_print_list(t_data *list, char *opt)
+void	ft_print_list(t_data *list, char *opt, char *path, char **path_str)
 {
 	t_data	*tmp2;
 	int		blocksize;
 	t_data 	*tmp;
 	int 	*size;
+	int 	i;
 
 	size = ft_count_space(list, opt);
 	tmp2 = list;
 	blocksize = 0;
+	while (path_str[i] != NULL)
+		i++;
+	if (S_ISDIR(list->mode) && i > 1)
+	{
+		ft_putstr(path);
+		ft_putstr(":\n");
+	}
 	if (opt[0] == 'l' && (S_ISDIR(list->mode)))
 	{
 		tmp2 = list;

@@ -22,6 +22,7 @@
 # include <pwd.h>
 # include <grp.h>
 # include <uuid/uuid.h>
+# include <stdio.h>
 # include "../libft/includes/libft.h"
 # define S_DIRENT struct dirent
 # define S_STAT struct stat
@@ -42,9 +43,9 @@ typedef struct		s_data
 }					t_data;
 
 void				ft_print_l(t_data *tmp, t_data *list, char *opt, int *size);
-int					ft_ls(char *opt, char *path);
+int					ft_ls(char *opt, char *path, char **path_str);
 t_data				*ft_addlink(char *path, char *str);
-void				ft_print_list(t_data *list, char *opt);
+void				ft_print_list(t_data *list, char *opt, char *path, char **path_str);
 t_data				*ft_sort_list(t_data **begin, char *opt);
 void				ft_swap_brick(t_data *tmp, t_data **begin);
 void				ft_list_reverse(t_data **begin_list);

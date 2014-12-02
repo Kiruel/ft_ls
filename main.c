@@ -130,20 +130,13 @@ int	main(int ac, char **av)
     while (path[j] != 0)
         j++;
     if (j == 0)
-    {
-        ft_ls(opt, ".");
-    }
+        ft_ls(opt, ".", path);
     else
     {
         i = 0;
         while (path[i] != '\0')
         {
-            if (j > 1)
-            {
-                ft_putstr(path[i]);
-                ft_putstr(":\n");
-            }
-            if (ft_ls(opt, path[i]) == -1)
+            if (ft_ls(opt, path[i], path) == -1)
                 return (0);
             if (j > 1 && !(i == j - 1))
                 ft_putchar('\n');
