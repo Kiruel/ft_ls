@@ -23,8 +23,9 @@ void	ft_print_list(t_data *list, char *opt)
 	size = ft_count_space(list, opt);
 	tmp2 = list;
 	blocksize = 0;
-	if (opt[0] == 'l')
+	if (opt[0] == 'l' && (S_ISDIR(list->mode)))
 	{
+		tmp2 = list;
 		ft_putstr("total ");
 		while (tmp2 != NULL)
 		{

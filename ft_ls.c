@@ -34,14 +34,14 @@ int		ft_create_chain(char *path, t_data **list, char *opt)
 	s_dir = opendir(path);
 	if (s_dir == 0)
 	{
-		if (errno == ENOTDIR)
-		{
-			ft_putstr(path);
-			ft_putchar('\n');
-			exit(1);
-		}
+		*list = ft_addlink(".", path);
+		if (!(S_ISDIR((*list)->mode)))
+			return (0);
 		else
 		{
+			ft_putstr("ft_ls: ");
+			ft_putstr(path);
+			ft_putstr(": ");
 			perror("");
 			return (-1);
 		}
