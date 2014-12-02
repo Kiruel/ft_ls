@@ -85,7 +85,7 @@ int	main(int ac, char **av)
 {
 	int		i;
     int     j;
-	char	opt[5];
+	char	opt[6];
     char    **path;
 
 	i = -1;
@@ -108,6 +108,8 @@ int	main(int ac, char **av)
                 opt[3] = 'r';
             if (av[j][i] == 't')
                 opt[4] = 't';
+            if (av[j][i] == 'R')
+                opt[5] = 'R';
             i++;
         }
 		j++;

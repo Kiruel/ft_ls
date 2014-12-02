@@ -33,12 +33,25 @@ int		ft_create_chain(char *path, t_data **list, char *opt)
 
 	s_dir = opendir(path);
 	if (s_dir == 0)
-		return (-1);
+	{
+		if (errno == ENOTDIR)
+		{
+			ft_putstr(path);
+			ft_putchar('\n');
+			exit(1);
+		}
+		else
+		{
+			perror("");
+			return (-1);
+		}
+	}
 	poil = readdir(s_dir);
 	*list = ft_addlink(path, poil->d_name);
 	tmp = *list;
 	while ((poil = readdir(s_dir)) != NULL)
 	{
+		if (poil)
 		tmp->next = ft_addlink(path, poil->d_name);
 		tmp = tmp->next;
 	}
