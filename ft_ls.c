@@ -34,9 +34,11 @@ int		ft_create_chain(char *path, t_data **list, char *opt)
 	s_dir = opendir(path);
 	if (s_dir == 0)
 	{
-		*list = ft_addlink(".", path);
-		if (!(S_ISDIR((*list)->mode)))
+		if (errno == ENOTDIR)
+		{
+			*list = ft_addlink(".", path);
 			return (0);
+		}
 		else
 		{
 			ft_putstr("ft_ls: ");
@@ -45,6 +47,7 @@ int		ft_create_chain(char *path, t_data **list, char *opt)
 			perror("");
 			return (-1);
 		}
+		return (-1);
 	}
 	poil = readdir(s_dir);
 	*list = ft_addlink(path, poil->d_name);
@@ -56,7 +59,7 @@ int		ft_create_chain(char *path, t_data **list, char *opt)
 		tmp = tmp->next;
 	}
 	if (closedir(s_dir))
-		return (-1);
+		return (0);
 	return (0);
 }
 
@@ -66,7 +69,7 @@ int		ft_ls(char *opt, char *path, char **path_str)
 	t_data 		*list;
 
 	if (ft_create_chain(path, &list, opt) == -1)
-		return (-1);
+		return (0);
 	list = ft_sort_list(&list, opt);
 	ft_print_list(list, opt, path, path_str);
 	ft_free_list(&list);

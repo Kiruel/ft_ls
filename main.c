@@ -12,42 +12,29 @@
 
 #include "includes/ft_ls.h"
 
+char    **ft_swap_path_again(int j, char **path, char *opt)
+{
+    int i;
+    char    *tmp;
+
+    while (j)
+    {
+        i = 0;
+        path = ft_swap_arg(opt, path, i);
+        j--;
+    }
+    return (path);
+}
+
 char    **ft_swap_path(char *opt, char **path)
 {
     int     i;
     int     j;
-    char    *tmp;
 
     j = 0;
     while (path[j] != 0)
         j++;
-    while (j)
-    {
-        i = 0;
-        while (path[i] != '\0' && path[i + 1] != 0)
-        {
-            if (opt[3] == 'r')
-            {  
-                if (ft_strcmp(path[i], path[i + 1]) < 0)
-                {
-                    tmp = path[i];
-                    path[i] = path[i + 1];
-                    path[i + 1] = tmp;
-                }
-            }
-            else
-            {
-                if (ft_strcmp(path[i], path[i + 1]) > 0)
-                {
-                    tmp = path[i];
-                    path[i] = path[i + 1];
-                    path[i + 1] = tmp;
-                }
-            }
-            i++;
-        }
-        j--;
-    }
+    path = ft_swap_path_again(j, path, opt);
     return (path);
 }
 
@@ -115,33 +102,13 @@ int	main(int ac, char **av)
 		j++;
 	}
     i = 0;
-    j = 0;
     path = ft_find_path(ac, av, opt);
-    while (path[j] != '\0')
-    {
-        if (ft_strcmp(path[j], "."))
-            i++;
-        j++;
-    }
-    if (i > 1)
-        i = 1;
-    j = 0;
-    j = 0;
-    while (path[j] != 0)
-        j++;
-    if (j == 0)
+    if (path[0] == NULL)
         ft_ls(opt, ".", path);
-    else
+    while (path[i] != '\0')
     {
-        i = 0;
-        while (path[i] != '\0')
-        {
-            if (ft_ls(opt, path[i], path) == -1)
-                return (0);
-            if (j > 1 && !(i == j - 1))
-                ft_putchar('\n');
-            i++;
-        }
+        ft_ls(opt, path[i], path);
+        i++;
     }
 	return (0);
 }

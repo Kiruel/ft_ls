@@ -24,7 +24,8 @@ SOURCE = ft_ls.c \
 	ft_align_right.c \
 	ft_print_l.c \
 	ft_count_space.c \
-	ft_add_space_owner.c
+	ft_add_space_owner.c \
+	ft_swap_arg.c
 
 POINTO = $(SOURCE:.c=.o)
 

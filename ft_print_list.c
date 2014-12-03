@@ -20,12 +20,17 @@ void	ft_print_list(t_data *list, char *opt, char *path, char **path_str)
 	t_data 	*tmp;
 	int 	*size;
 	int 	i;
+	int 	j;
 
 	size = ft_count_space(list, opt);
 	tmp2 = list;
 	blocksize = 0;
+	i = 0;
 	while (path_str[i] != NULL)
 		i++;
+	j = 0;
+	while (path_str[j] != path && path_str[j] != NULL)
+		j++;
 	if (S_ISDIR(list->mode) && i > 1)
 	{
 		ft_putstr(path);
@@ -43,6 +48,8 @@ void	ft_print_list(t_data *list, char *opt, char *path, char **path_str)
 		ft_putnbr(blocksize);
 		ft_putchar('\n');
 	}
+	if (i > 1 && !(j == i - 1) && S_ISDIR(list->mode))
+		ft_putchar('\n');
 	tmp2 = list;
 	tmp = list;
 	while (tmp2 != NULL)

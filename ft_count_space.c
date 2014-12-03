@@ -32,6 +32,7 @@ int		*ft_count_space(t_data *list, char *opt)
 			tmp = tmp->next;
 		if (tmp->nlink > size[1])
 				size[1] = tmp->nlink;
+			tmp = tmp2;
 		if (ft_strlen(tmp2->name_owner) > size[2])
 			size[2] = ft_strlen(tmp2->name_owner);
 		tmp2 = tmp2->next;
