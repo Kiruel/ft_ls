@@ -48,7 +48,9 @@ int	main(int ac, char **av)
     i = 0;
     path = ft_find_path(ac, av, opt);
     if (path[0] == NULL)
+    {
         ft_ls(opt, ".", path);
+    }
     while (path[i] != '\0')
     {
         ft_ls(opt, path[i], path);

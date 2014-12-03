@@ -82,7 +82,7 @@ int		ft_ls(char *opt, char *path, char **path_str)
 		ft_putstr(":\n");
 	}
 	j = 0;
-	if (opt[0] == 'l' && (S_ISDIR(list->mode)) && i > 1)
+	if (opt[0] == 'l' && (S_ISDIR(list->mode)))
 	{
 		tmp2 = list;
 		ft_putstr("total ");
@@ -95,7 +95,7 @@ int		ft_ls(char *opt, char *path, char **path_str)
 		ft_putchar('\n');
 	}
 	j = 0;
-	while (path_str[j] != path)
+	while (path_str[j] != path && path_str[j] != NULL)
 		j++;
 	list = ft_sort_list(&list, opt);
 	ft_print_list(list, opt, path, path_str);

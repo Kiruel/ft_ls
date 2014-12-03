@@ -18,17 +18,14 @@ int		ft_errno(char *path)
 
 	s_dir = NULL;
 	s_dir = opendir(path);
-	if (s_dir == 0)
-	{
-		if (errno == ENOTDIR)
-			return (errno);
-	}
-	if (closedir(s_dir))
-		return (0);
+	if (s_dir == NULL)
+		return (errno);
+	if (closedir(s_dir) == -1)
+		return (-1);
 	return (0);
 }
 
-char **ft_swap_arg(char *opt, char **path, int err)
+char **ft_swap_arg(char *opt, char **path)
 {
     char *tmp;
     int 	i;
@@ -36,23 +33,17 @@ char **ft_swap_arg(char *opt, char **path, int err)
     i = 0;
     while (path[i] != '\0' && path[i + 1] != 0)
     {
-        if (opt[3] == 'r')
+        if (ft_strcmp(path[i], path[i + 1]) < 0 && opt[3] == 'r')
         {
-            if (ft_strcmp(path[i], path[i + 1]) < 0)
-            {
-                tmp = path[i];
-                path[i] = path[i + 1];
-                path[i + 1] = tmp;
-            }
+            tmp = path[i];
+            path[i] = path[i + 1];
+            path[i + 1] = tmp;
         }
-        else
+        else if (ft_strcmp(path[i], path[i + 1]) > 0)
         {
-            if (ft_strcmp(path[i], path[i + 1]) > 0)
-            {
-                tmp = path[i];
-                path[i] = path[i + 1];
-                path[i + 1] = tmp;
-            }
+            tmp = path[i];
+            path[i] = path[i + 1];
+            path[i + 1] = tmp;
         }
         i++;
     }
@@ -68,7 +59,7 @@ char    **ft_swap_path(char *opt, char **path)
     ret = path;
     while (ret[i] != NULL)
     {
-        path = ft_swap_arg(opt, ret, ft_errno(ret[i]));
+        path = ft_swap_arg(opt, ret);
         i++;
     }
     return (path);

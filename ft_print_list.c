@@ -16,27 +16,12 @@
 void	ft_print_list(t_data *list, char *opt, char *path, char **path_str)
 {
 	t_data	*tmp2;
-	// int		blocksize;
 	t_data 	*tmp;
 	int 	*size;
 	int 	i;
 	int 	j;
 
 	size = ft_count_space(list, opt);
-	// tmp2 = list;
-	// blocksize = 0;
-	// if (opt[0] == 'l' && (S_ISDIR(list->mode)))
-	// {
-	// 	tmp2 = list;
-	// 	ft_putstr("total ");
-	// 	while (tmp2 != NULL)
-	// 	{
-	// 		blocksize += tmp2->blocksize;
-	// 		tmp2 = tmp2->next;
-	// 	}
-	// 	ft_putnbr(blocksize);
-	// 	ft_putchar('\n');
-	// }
 	tmp2 = list;
 	tmp = list;
 	while (tmp2 != NULL)
