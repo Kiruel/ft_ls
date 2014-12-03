@@ -6,7 +6,7 @@
 /*   By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/21 11:03:48 by etheodor          #+#    #+#             */
-/*   Updated: 2014/11/21 11:03:49 by etheodor         ###   ########.fr       */
+/*   Updated: 2014/12/03 19:00:17 by etheodor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int		ft_create_chain(char *path, t_data **list, char *opt)
 	tmp = *list;
 	while ((poil = readdir(s_dir)) != NULL)
 	{
-		if (poil)
 		tmp->next = ft_addlink(path, poil->d_name);
 		tmp = tmp->next;
 	}
@@ -101,6 +100,8 @@ int		ft_ls(char *opt, char *path, char **path_str)
 	ft_print_list(list, opt, path, path_str);
 	if (i > 1 && !(j == i - 1))
 		ft_putchar('\n');
+	if (S_ISDIR(list->mode) && opt[5] == 'R')
+		ft_ls(opt, list->next->next->next->next->next->name, path_str);
 	ft_free_list(&list);
 	return (0);
 }
