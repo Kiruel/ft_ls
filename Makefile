@@ -6,7 +6,7 @@
 #    By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/20 15:13:13 by etheodor          #+#    #+#              #
-#    Updated: 2014/11/24 16:30:50 by etheodor         ###   ########.fr        #
+#    Updated: 2014/12/03 12:19:14 by etheodor         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -25,7 +25,7 @@ SOURCE = ft_ls.c \
 	ft_print_l.c \
 	ft_count_space.c \
 	ft_add_space_owner.c \
-	ft_swap_arg.c
+	ft_find_path.c
 
 POINTO = $(SOURCE:.c=.o)
 
@@ -41,7 +41,7 @@ $(NAME):
 
 test:
 	@gcc -c $(SOURCE) 
-	@gcc -o $(NAME) $(POINTO) -L libft/ -lft -I includes/
+	@gcc -o $(NAME) $(POINTO) $(CFLAG) -L libft/ -lft -I includes/
 	@make clean
 
 clean:

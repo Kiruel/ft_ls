@@ -43,7 +43,6 @@ typedef struct		s_data
 }					t_data;
 
 void				ft_print_l(t_data *tmp, t_data *list, char *opt, int *size);
-char 				**ft_swap_arg(char *opt, char **path, int i);
 int					ft_ls(char *opt, char *path, char **path_str);
 t_data				*ft_addlink(char *path, char *str);
 void				ft_print_list(t_data *list, char *opt, char *path, char **path_str);
@@ -53,5 +52,6 @@ void				ft_list_reverse(t_data **begin_list);
 void				ft_align_right(int maxnbr, int size);
 int					*ft_count_space(t_data *list, char *opt);
 void				ft_add_space_owner(int max_size, int size_owner);
+char    			**ft_find_path(int ac, char **av, char *opt);
 
 #endif

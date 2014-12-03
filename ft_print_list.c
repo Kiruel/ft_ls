@@ -48,8 +48,6 @@ void	ft_print_list(t_data *list, char *opt, char *path, char **path_str)
 		ft_putnbr(blocksize);
 		ft_putchar('\n');
 	}
-	if (i > 1 && !(j == i - 1) && S_ISDIR(list->mode))
-		ft_putchar('\n');
 	tmp2 = list;
 	tmp = list;
 	while (tmp2 != NULL)
@@ -57,5 +55,7 @@ void	ft_print_list(t_data *list, char *opt, char *path, char **path_str)
 		ft_print_l(tmp2, tmp, opt, size);
 		tmp2 = tmp2->next;
 	}
+	if (i > 1 && !(j == i - 1) && S_ISDIR(list->mode))
+		ft_putchar('\n');	
 	free(size);
 }

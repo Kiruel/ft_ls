@@ -12,62 +12,6 @@
 
 #include "includes/ft_ls.h"
 
-char    **ft_swap_path_again(int j, char **path, char *opt)
-{
-    int i;
-    char    *tmp;
-
-    while (j)
-    {
-        i = 0;
-        path = ft_swap_arg(opt, path, i);
-        j--;
-    }
-    return (path);
-}
-
-char    **ft_swap_path(char *opt, char **path)
-{
-    int     i;
-    int     j;
-
-    j = 0;
-    while (path[j] != 0)
-        j++;
-    path = ft_swap_path_again(j, path, opt);
-    return (path);
-}
-
-char    **ft_find_path(int ac, char **av, char *opt)
-{
-    char **path;
-    int j;
-    int i;
-
-    j = 1;
-    i = 1;
-    while (av[j] != '\0')
-    {
-        if (av[j][0] == '-')
-            i++;
-        j++;
-    }
-    j = i;
-    while (av[j] != '\0')
-        j++;
-    path = (char**)malloc(sizeof(char*) * j + 1);
-    j = 0;
-    while (av[i] != '\0')
-    {
-        path[j] = av[i];
-        i++;
-        j++;
-    }
-    path[j] = '\0';
-    path = ft_swap_path(opt, path);
-    return (path);
-}
-
 int	main(int ac, char **av)
 {
 	int		i;
