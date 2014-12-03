@@ -67,11 +67,40 @@ int		ft_ls(char *opt, char *path, char **path_str)
 {
 	S_DIRENT	*poil;
 	t_data 		*list;
+	int			i;
+	int			j;
+	t_data		*tmp2;
 
+	i = 0;
 	if (ft_create_chain(path, &list, opt) == -1)
 		return (0);
+	while (path_str[i] != NULL)
+		i++;
+	if (S_ISDIR(list->mode) && i > 1)
+	{
+		ft_putstr(path);
+		ft_putstr(":\n");
+	}
+	j = 0;
+	if (opt[0] == 'l' && (S_ISDIR(list->mode)) && i > 1)
+	{
+		tmp2 = list;
+		ft_putstr("total ");
+		while (tmp2 != NULL)
+		{
+			j += tmp2->blocksize;
+			tmp2 = tmp2->next;
+		}
+		ft_putnbr(j);
+		ft_putchar('\n');
+	}
+	j = 0;
+	while (path_str[j] != path)
+		j++;
 	list = ft_sort_list(&list, opt);
 	ft_print_list(list, opt, path, path_str);
+	if (i > 1 && !(j == i - 1))
+		ft_putchar('\n');
 	ft_free_list(&list);
 	return (0);
 }

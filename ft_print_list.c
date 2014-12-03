@@ -16,46 +16,33 @@
 void	ft_print_list(t_data *list, char *opt, char *path, char **path_str)
 {
 	t_data	*tmp2;
-	int		blocksize;
+	// int		blocksize;
 	t_data 	*tmp;
 	int 	*size;
 	int 	i;
 	int 	j;
 
 	size = ft_count_space(list, opt);
-	tmp2 = list;
-	blocksize = 0;
-	i = 0;
-	while (path_str[i] != NULL)
-		i++;
-	j = 0;
-	while (path_str[j] != path && path_str[j] != NULL)
-		j++;
-	if (S_ISDIR(list->mode) && i > 1)
-	{
-		ft_putstr(path);
-		ft_putstr(":\n");
-	}
-	if (opt[0] == 'l' && (S_ISDIR(list->mode)))
-	{
-		tmp2 = list;
-		ft_putstr("total ");
-		while (tmp2 != NULL)
-		{
-			blocksize += tmp2->blocksize;
-			tmp2 = tmp2->next;
-		}
-		ft_putnbr(blocksize);
-		ft_putchar('\n');
-	}
+	// tmp2 = list;
+	// blocksize = 0;
+	// if (opt[0] == 'l' && (S_ISDIR(list->mode)))
+	// {
+	// 	tmp2 = list;
+	// 	ft_putstr("total ");
+	// 	while (tmp2 != NULL)
+	// 	{
+	// 		blocksize += tmp2->blocksize;
+	// 		tmp2 = tmp2->next;
+	// 	}
+	// 	ft_putnbr(blocksize);
+	// 	ft_putchar('\n');
+	// }
 	tmp2 = list;
 	tmp = list;
 	while (tmp2 != NULL)
 	{
 		ft_print_l(tmp2, tmp, opt, size);
 		tmp2 = tmp2->next;
-	}
-	if (i > 1 && !(j == i - 1) && S_ISDIR(list->mode))
-		ft_putchar('\n');	
+	}	
 	free(size);
 }

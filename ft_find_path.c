@@ -20,7 +20,6 @@ int		ft_errno(char *path)
 	s_dir = opendir(path);
 	if (s_dir == 0)
 	{
-		// perror("");
 		if (errno == ENOTDIR)
 			return (errno);
 	}
@@ -48,7 +47,7 @@ char **ft_swap_arg(char *opt, char **path, int err)
         }
         else
         {
-            if (ft_strcmp(path[i], path[i + 1]) > 0 && err == 0)
+            if (ft_strcmp(path[i], path[i + 1]) > 0)
             {
                 tmp = path[i];
                 path[i] = path[i + 1];
