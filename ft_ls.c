@@ -100,8 +100,8 @@ int		ft_ls(char *opt, char *path, char **path_str)
 	ft_print_list(list, opt, path, path_str);
 	if (i > 1 && !(j == i - 1))
 		ft_putchar('\n');
-	if (S_ISDIR(list->mode) && opt[5] == 'R')
-		ft_ls(opt, list->next->next->next->next->next->name, path_str);
+	// if (S_ISDIR(list->mode) && opt[5] == 'R')
+	// 	ft_ls(opt, list->next->next->next->next->next->name, path_str);
 	ft_free_list(&list);
 	return (0);
 }

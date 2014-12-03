@@ -24,7 +24,7 @@ t_data	*ft_sort_list(t_data **begin, char *opt)
 		tmp = *begin;
 		while (tmp->next)
 		{
-			if (tmp->mtimes < tmp->next->mtimes && opt[4] == 't')
+			if (tmp->mtimes > tmp->next->mtimes && opt[4] == 't')
 			{
 				i = 1;
 				ft_swap_brick(tmp, begin);
@@ -38,6 +38,8 @@ t_data	*ft_sort_list(t_data **begin, char *opt)
 				tmp = tmp->next;
 		}
 	}
+	if (opt[4] == 't')
+		ft_list_reverse(begin);		
 	if (opt[3] == 'r')
 		ft_list_reverse(begin);
 	return (*begin);

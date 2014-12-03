@@ -28,7 +28,8 @@ int		*ft_count_space(t_data *list, char *opt)
 	{
 		if (tmp2->sizes > size[0])
 			size[0] = tmp2->sizes;
-		while (tmp->name[0] == '.' && opt[2] != 'a' && opt[3] != 'r')
+		while (tmp->name[0] == '.' && opt[2] != 'a' && opt[3] != 'r' && \
+			opt[4] != 't')
 			tmp = tmp->next;
 		if (tmp->nlink > size[1])
 				size[1] = tmp->nlink;
