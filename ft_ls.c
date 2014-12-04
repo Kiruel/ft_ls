@@ -104,11 +104,11 @@ int		ft_ls(char *opt, char *path, char **path_str)
 	//recursive
 	while (tmp2 != NULL)
 	{
-		
+		if (tmp2->name[0] != '.' && tmp2->name[1] != '.')
+			if (S_ISDIR(list->mode) && opt[5] == 'R')
+				ft_ls(opt, list->next->next->next->next->next->name, path_str);
+		tmp2 = tmp2->next;
 	}
-	if (tmp2->name[0] != )
-	if (S_ISDIR(list->mode) && opt[5] == 'R')
-		ft_ls(opt, list->next->next->next->next->next->name, path_str);
 	ft_free_list(&list);
 	return (0);
 }
