@@ -38,4 +38,8 @@ Idee:
 
 -Utiliser readlink pour afficher les fichiers links.
 
+-gerer les fichiers devices.
+
+-gerer l'option -t
+
 -Faire la recursivite.

@@ -12,75 +12,6 @@
 
 #include "includes/ft_ls.h"
 
-char    **ft_swap_path(char *opt, char **path)
-{
-    int     i;
-    int     j;
-    char    *tmp;
-
-    j = 0;
-    while (path[j] != 0)
-        j++;
-    while (j)
-    {
-        i = 0;
-        while (path[i] != '\0' && path[i + 1] != 0)
-        {
-            if (opt[3] == 'r')
-            {  
-                if (ft_strcmp(path[i], path[i + 1]) < 0)
-                {
-                    tmp = path[i];
-                    path[i] = path[i + 1];
-                    path[i + 1] = tmp;
-                }
-            }
-            else
-            {
-                if (ft_strcmp(path[i], path[i + 1]) > 0)
-                {
-                    tmp = path[i];
-                    path[i] = path[i + 1];
-                    path[i + 1] = tmp;
-                }
-            }
-            i++;
-        }
-        j--;
-    }
-    return (path);
-}
-
-char    **ft_find_path(int ac, char **av, char *opt)
-{
-    char **path;
-    int j;
-    int i;
-
-    j = 1;
-    i = 1;
-    while (av[j] != '\0')
-    {
-        if (av[j][0] == '-')
-            i++;
-        j++;
-    }
-    j = i;
-    while (av[j] != '\0')
-        j++;
-    path = (char**)malloc(sizeof(char*) * j + 1);
-    j = 0;
-    while (av[i] != '\0')
-    {
-        path[j] = av[i];
-        i++;
-        j++;
-    }
-    path[j] = '\0';
-    path = ft_swap_path(opt, path);
-    return (path);
-}
-
 int	main(int ac, char **av)
 {
 	int		i;
@@ -115,40 +46,15 @@ int	main(int ac, char **av)
 		j++;
 	}
     i = 0;
-    j = 0;
     path = ft_find_path(ac, av, opt);
-    while (path[j] != '\0')
+    if (path[0] == NULL)
     {
-        if (ft_strcmp(path[j], "."))
-            i++;
-        j++;
+        ft_ls(opt, ".", path);
     }
-    if (i > 1)
-        i = 1;
-    j = 0;
-    j = 0;
-    while (path[j] != 0)
-        j++;
-    if (j == 0)
+    while (path[i] != '\0')
     {
-        ft_ls(opt, ".");
-    }
-    else
-    {
-        i = 0;
-        while (path[i] != '\0')
-        {
-            if (j > 1)
-            {
-                ft_putstr(path[i]);
-                ft_putstr(":\n");
-            }
-            if (ft_ls(opt, path[i]) == -1)
-                return (0);
-            if (j > 1 && !(i == j - 1))
-                ft_putchar('\n');
-            i++;
-        }
+        ft_ls(opt, path[i], path);
+        i++;
     }
 	return (0);
 }
