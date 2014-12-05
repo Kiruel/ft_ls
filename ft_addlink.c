@@ -12,17 +12,6 @@
 
 #include "includes/ft_ls.h"
 
-char	*ft_mega_join(char *path, char *backslash, char *name)
-{
-	char *tmp;
-	char *tmp2;
-
-	tmp = ft_strjoin(path, backslash);
-	tmp2 = ft_strjoin(tmp, name);
-	free(tmp);
-	return (tmp2);
-}
-
 t_data	*ft_addlink(char *path, char *str)
 {
 	t_data	*brick;

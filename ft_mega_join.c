@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_list.c                                    :+:      :+:    :+:   */
+/*   ft_mega_join.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/23 17:05:18 by etheodor          #+#    #+#             */
-/*   Updated: 2014/11/27 09:33:22 by etheodor         ###   ########.fr       */
+/*   Created: 2014/12/05 15:57:57 by etheodor          #+#    #+#             */
+/*   Updated: 2014/12/05 15:58:01 by etheodor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_ls.h"
 
-
-void	ft_print_list(t_data *list, char *opt, char *path)
+char	*ft_mega_join(char *path, char *backslash, char *name)
 {
-	t_data	*tmp2;
-	t_data 	*tmp;
-	int 	*size;
-	int 	i;
-	int 	j;
+	char *tmp;
+	char *tmp2;
 
-	size = ft_count_space(list, opt);
-	tmp2 = list;
-	tmp = list;
-	while (tmp2 != NULL)
-	{
-		ft_print_l(tmp2, tmp, opt, size);
-		tmp2 = tmp2->next;
-	}	
-	free(size);
+	tmp = ft_strjoin(path, backslash);
+	tmp2 = ft_strjoin(tmp, name);
+	free(tmp);
+	return (tmp2);
 }

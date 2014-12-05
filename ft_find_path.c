@@ -12,7 +12,7 @@
 
 #include "includes/ft_ls.h"
 
-int		ft_errno(char *path)
+/*int		ft_errno(char *path)
 {
 	DIR *s_dir;
 
@@ -24,7 +24,7 @@ int		ft_errno(char *path)
 		return (-1);
 	return (0);
 }
-
+*/
 char **ft_swap_arg(char *opt, char **path)
 {
     char *tmp;
