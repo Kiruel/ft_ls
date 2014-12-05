@@ -53,5 +53,6 @@ void				ft_align_right(int maxnbr, int size);
 int					*ft_count_space(t_data *list, char *opt);
 void				ft_add_space_owner(int max_size, int size_owner);
 char    			**ft_find_path(int ac, char **av, char *opt);
+void 				ft_recursive(t_data *list, char *opt, char **path_str);
 
 #endif

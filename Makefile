@@ -25,8 +25,9 @@ SOURCE = ft_ls.c \
 	ft_print_l.c \
 	ft_count_space.c \
 	ft_add_space_owner.c \
-	ft_find_path.c
-
+	ft_find_path.c \
+	ft_recursive.c
+	
 POINTO = $(SOURCE:.c=.o)
 
 all: $(NAME)

@@ -100,17 +100,8 @@ int		ft_ls(char *opt, char *path, char **path_str)
 	ft_print_list(list, opt, path, path_str);
 	if (i > 1 && !(j == i - 1))
 		ft_putchar('\n');
-	tmp2 = list;
-	//recursive
-	i = 0;
-	tmp2 = tmp2->next->next;
-	while (tmp2 != NULL)
-	{
-		if (S_ISDIR(tmp2->mode) && opt[5] == 'R')
-			ft_ls(opt, ft_strjoin(tmp2->name, "/"), path_str);
-		tmp2 = tmp2->next;
-		i++;
-	}
+	if (opt[5] == 'R')
+		ft_recursive(list, opt, path_str);
 	ft_free_list(&list);
 	return (0);
 }
