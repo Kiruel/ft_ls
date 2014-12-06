@@ -97,13 +97,7 @@ int		ft_ls(char *opt, char *path, char **path_str)
 	while (path_str[j] != path && path_str[j] != NULL)
 		j++;
 	list = ft_sort_list(&list, opt);
-	if (opt[5] == 'R')
-	{
-		if (list->name[0] == '.')
-			ft_print_list(list, opt, path);		
-	}
-	else
-		ft_print_list(list, opt, path);
+	ft_print_list(list, opt, path);
 	if (i > 1 && !(j == i - 1))
 		ft_putchar('\n');
 	if (opt[5] == 'R')

@@ -18,8 +18,6 @@ void	ft_print_list(t_data *list, char *opt, char *path)
 	t_data	*tmp2;
 	t_data 	*tmp;
 	int 	*size;
-	int 	i;
-	int 	j;
 
 	size = ft_count_space(list, opt);
 	tmp2 = list;

@@ -22,7 +22,8 @@ void ft_recursive(t_data *list, char *opt, char *path, char **path_str)
 	tmp2 = list;
 	while (tmp2 != NULL)
 	{
-		if (tmp2->name[i] != '.')
+		if (tmp2->name[i] != '.' && opt[3] != 'a')
+		{
 			if (S_ISDIR(tmp2->mode))
 			{
 				ft_putchar('\n');			
@@ -30,7 +31,8 @@ void ft_recursive(t_data *list, char *opt, char *path, char **path_str)
 				ft_putstr(ret);
 				ft_putstr(":\n");
 				ft_ls(opt, ret, path_str);
-			}
+			}			
+		}
 		tmp2 = tmp2->next;
 		i++;
 	}
