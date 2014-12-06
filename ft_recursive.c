@@ -22,7 +22,7 @@ void ft_recursive(t_data *list, char *opt, char *path, char **path_str)
 	tmp2 = list;
 	while (tmp2 != NULL)
 	{
-		if (tmp2->name[i] != '.' && opt[3] != 'a')
+		if (tmp2->name[0] != '.' && opt[3] != 'a')
 		{
 			if (S_ISDIR(tmp2->mode))
 			{

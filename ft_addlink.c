@@ -22,10 +22,10 @@ t_data	*ft_addlink(char *path, char *str)
 	path = ft_mega_join(path, "/", str);
 	(void)lstat(path, &megapoil);
 	brick = (t_data*)malloc(sizeof(t_data));
-	brick->uid = (int)megapoil.st_uid;
-	brick->gid = (int)megapoil.st_gid;
 	if (brick == 0)
 		return (NULL);
+	brick->uid = (int)megapoil.st_uid;
+	brick->gid = (int)megapoil.st_gid;	
 	if ((pwd = getpwuid(brick->uid)))
 		brick->name_owner = pwd->pw_name;
 	else
