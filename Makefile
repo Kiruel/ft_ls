@@ -27,7 +27,8 @@ SOURCE = ft_ls.c \
 	ft_add_space_owner.c \
 	ft_find_path.c \
 	ft_recursive.c \
-	ft_mega_join.c
+	ft_mega_join.c \
+	ft_find_hidden_path.c
 
 POINTO = $(SOURCE:.c=.o)
 

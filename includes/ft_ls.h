@@ -42,10 +42,11 @@ typedef struct		s_data
 	struct s_data	*next;
 }					t_data;
 
+int					ft_find_hidden_path(char *path, char *opt);
 void				ft_print_l(t_data *tmp, t_data *list, char *opt, int *size);
 int					ft_ls(char *opt, char *path, char **path_str);
 t_data				*ft_addlink(char *path, char *str);
-void				ft_print_list(t_data *list, char *opt, char *path);
+void				ft_print_list(t_data *list, char *opt, char *path, int k);
 t_data				*ft_sort_list(t_data **begin, char *opt);
 void				ft_swap_brick(t_data *tmp, t_data **begin);
 void				ft_list_reverse(t_data **begin_list);

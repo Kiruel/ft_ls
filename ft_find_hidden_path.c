@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive.c                                     :+:      :+:    :+:   */
+/*   ft_find_hidden_path.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/05 14:57:37 by etheodor          #+#    #+#             */
-/*   Updated: 2014/12/05 14:57:38 by etheodor         ###   ########.fr       */
+/*   Created: 2014/12/08 09:47:35 by etheodor          #+#    #+#             */
+/*   Updated: 2014/12/08 09:47:36 by etheodor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_ls.h"
 
-void ft_recursive(t_data *list, char *opt, char *path, char **path_str)
+int		ft_find_hidden_path(char *path, char *opt)
 {
-	t_data *tmp2;
 	int i;
-	char *ret;
 
 	i = 0;
-	tmp2 = list;
-	while (tmp2 != NULL)
-	{
-		if (S_ISDIR(tmp2->mode) && tmp2->name[i] != '.')
-		{
-			ret = ft_mega_join(path, "/", tmp2->name);
-			ft_ls(opt, ret, path_str);
-		}
-		tmp2 = tmp2->next;
+	while (path[i] != '\0')
 		i++;
+	while (path[i] != '/')
+		i--;
+	if (path[1] == '/' && path[i + 1] != '.')
+	{
+		ft_putchar('\n');
+		ft_putstr(path);
+		ft_putstr(":\n");
 	}
+	return (i);
 }

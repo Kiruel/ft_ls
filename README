@@ -43,5 +43,7 @@ Idee:
 -gerer l'option -t (done)
 
 -Faire la recursivite.
-	-avec l'option -R, ne pas afficher le contenue des dossiers caché mais afficher le contenu des dossiers pas caché.
-	-avec l'option -Ra, tout afficher y compris le contenu des dossiers caché.
+	-avec l'option -R, ne pas afficher le contenue des dossiers caché mais afficher le contenu des dossiers pas caché.(done)
+	-avec l'option -Ra, tout afficher y compris le contenu des dossiers caché.(done)
+
+	-avec l'option -Rr, pour le moment sa seg fault..

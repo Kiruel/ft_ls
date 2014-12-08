@@ -68,6 +68,7 @@ int		ft_ls(char *opt, char *path, char **path_str)
 	t_data 		*list;
 	int			i;
 	int			j;
+	int			k;
 	t_data		*tmp2;
 
 	i = 0;
@@ -75,6 +76,8 @@ int		ft_ls(char *opt, char *path, char **path_str)
 		return (0);
 	while (path_str[i] != NULL)
 		i++;
+	k = 0;
+	k = ft_find_hidden_path(path, opt);
 	if (S_ISDIR(list->mode) && i > 1)
 	{
 		ft_putstr(path);
@@ -97,7 +100,7 @@ int		ft_ls(char *opt, char *path, char **path_str)
 	while (path_str[j] != path && path_str[j] != NULL)
 		j++;
 	list = ft_sort_list(&list, opt);
-	ft_print_list(list, opt, path);
+	ft_print_list(list, opt, path, k);
 	if (i > 1 && !(j == i - 1))
 		ft_putchar('\n');
 	if (opt[5] == 'R')
