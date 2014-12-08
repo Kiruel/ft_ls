@@ -62,23 +62,22 @@ int		ft_create_chain(char *path, t_data **list, char *opt)
 	return (0);
 }
 
-int		ft_ls(char *opt, char *path, char **path_str)
+int		ft_ls(char *opt, char *path, int h)
 {
 	S_DIRENT	*poil;
 	t_data 		*list;
 	int			i;
 	int			j;
-	int			k;
 	t_data		*tmp2;
 
 	i = 0;
 	if (ft_create_chain(path, &list, opt) == -1)
 		return (0);
-	while (path_str[i] != NULL)
+	while (path[i] != '\0')
 		i++;
-	k = 0;
-	k = ft_find_hidden_path(path, opt);
-	if (S_ISDIR(list->mode) && i > 1)
+	if (opt[5] == 'R')
+		i = ft_find_hidden_path(path, opt, i, h);
+	if (S_ISDIR(list->mode) && path[0] != '.' && opt[5] != 'R')
 	{
 		ft_putstr(path);
 		ft_putstr(":\n");
@@ -96,15 +95,10 @@ int		ft_ls(char *opt, char *path, char **path_str)
 		ft_putnbr(j);
 		ft_putchar('\n');
 	}
-	j = 0;
-	while (path_str[j] != path && path_str[j] != NULL)
-		j++;
 	list = ft_sort_list(&list, opt);
-	ft_print_list(list, opt, path, k);
-	if (i > 1 && !(j == i - 1))
-		ft_putchar('\n');
+	ft_print_list(list, opt, path, i);
 	if (opt[5] == 'R')
-		ft_recursive(list, opt, path, path_str);
+		ft_recursive(list, opt, path, h);
 	ft_free_list(&list);
 	return (0);
 }

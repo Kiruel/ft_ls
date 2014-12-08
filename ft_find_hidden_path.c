@@ -12,20 +12,32 @@
 
 #include "includes/ft_ls.h"
 
-int		ft_find_hidden_path(char *path, char *opt)
+int		ft_find_hidden_path(char *path, char *opt, int p, int h)
 {
 	int i;
+	int j;
+	int k;
 
+	k = 0;
+	j = 0;
 	i = 0;
 	while (path[i] != '\0')
 		i++;
 	while (path[i] != '/')
 		i--;
-	if (path[1] == '/' && path[i + 1] != '.')
+	while (path[j] != '\0')
 	{
-		ft_putchar('\n');
-		ft_putstr(path);
-		ft_putstr(":\n");
+		if (path[j] == '/')
+			k++;
+		j++;
+	}
+	if ((!(path[0] == '.' && path[1] == 0)))
+	{
+		if (path[i + 1] != '.')
+		{
+			ft_putstr(path);
+			ft_putstr(":\n");
+		}
 	}
 	return (i);
 }

@@ -47,13 +47,16 @@ int	main(int ac, char **av)
 	}
     i = 0;
     path = ft_find_path(ac, av, opt);
+    j = 0;
+    while (av[j] != '\0')
+        j++;
     if (path[0] == NULL)
-    {
-        ft_ls(opt, ".", path);
-    }
+        ft_ls(opt, ".", j);
     while (path[i] != '\0')
     {
-        ft_ls(opt, path[i], path);
+        ft_ls(opt, path[i], j);
+        if (path[i + 1] != '\0')
+            ft_putchar('\n');
         i++;
     }
 	return (0);

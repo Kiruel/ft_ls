@@ -47,3 +47,6 @@ Idee:
 	-avec l'option -Ra, tout afficher y compris le contenu des dossiers caché.(done)
 
 	-avec l'option -Rr, pour le moment sa seg fault..
+
+	- recursive depuis un autre dossier le path ne s'affiche pas.
+	

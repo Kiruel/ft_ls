@@ -42,9 +42,9 @@ typedef struct		s_data
 	struct s_data	*next;
 }					t_data;
 
-int					ft_find_hidden_path(char *path, char *opt);
+int					ft_find_hidden_path(char *path, char *opt, int i, int h);
 void				ft_print_l(t_data *tmp, t_data *list, char *opt, int *size);
-int					ft_ls(char *opt, char *path, char **path_str);
+int					ft_ls(char *opt, char *path, int h);
 t_data				*ft_addlink(char *path, char *str);
 void				ft_print_list(t_data *list, char *opt, char *path, int k);
 t_data				*ft_sort_list(t_data **begin, char *opt);
@@ -54,7 +54,7 @@ void				ft_align_right(int maxnbr, int size);
 int					*ft_count_space(t_data *list, char *opt);
 void				ft_add_space_owner(int max_size, int size_owner);
 char    			**ft_find_path(int ac, char **av, char *opt);
-void 				ft_recursive(t_data *list, char *opt, char *path, char **path_str);
+void 				ft_recursive(t_data *list, char *opt, char *path, int h);
 char				*ft_mega_join(char *path, char *backslash, char *name);
 
 #endif

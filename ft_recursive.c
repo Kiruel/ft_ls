@@ -12,11 +12,11 @@
 
 #include "includes/ft_ls.h"
 
-void ft_recursive(t_data *list, char *opt, char *path, char **path_str)
+void ft_recursive(t_data *list, char *opt, char *path, int h)
 {
 	t_data *tmp2;
-	int i;
 	char *ret;
+	int i;
 
 	i = 0;
 	tmp2 = list;
@@ -25,9 +25,10 @@ void ft_recursive(t_data *list, char *opt, char *path, char **path_str)
 		if (S_ISDIR(tmp2->mode) && tmp2->name[i] != '.')
 		{
 			ret = ft_mega_join(path, "/", tmp2->name);
-			ft_ls(opt, ret, path_str);
+			ft_putchar('\n');
+			ft_ls(opt, ret, h);
 		}
-		tmp2 = tmp2->next;
 		i++;
+		tmp2 = tmp2->next;
 	}
 }

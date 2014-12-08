@@ -6,7 +6,7 @@
 #    By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/20 15:13:13 by etheodor          #+#    #+#              #
-#    Updated: 2014/12/03 12:19:14 by etheodor         ###   ########.fr        #
+#    Updated: 2014/12/08 13:21:16 by etheodor         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -54,3 +54,5 @@ fclean: clean
 	@rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: all test fclean clean re
