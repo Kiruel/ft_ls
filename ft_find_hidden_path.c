@@ -12,7 +12,7 @@
 
 #include "includes/ft_ls.h"
 
-int		ft_find_hidden_path(char *path, char *opt, int p, int h, t_data *list)
+int		ft_find_hidden_path(char *path, char *opt, t_data *list, int h)
 {
 	int 	i;
 	int 	j;
@@ -34,7 +34,7 @@ int		ft_find_hidden_path(char *path, char *opt, int p, int h, t_data *list)
 	}
 	if ((!(path[0] == '.' && path[1] == 0)))
 	{
-		if (path[i + 1] != '.')
+		if (path[i + 1] != '.' && h > 1)
 		{
 			ft_putstr(path);
 			ft_putstr(":\n");
