@@ -40,7 +40,13 @@ t_data	*ft_addlink(char *path, char *str)
 	brick->sizes = (int)megapoil.st_size;
 	brick->linkname = (char*)malloc(megapoil.st_size + 1);
 	ret = 0;
-	ret = readlink(path, brick->linkname, megapoil.st_size);
+	if (S_ISLNK(megapoil.st_mode))
+		ret = readlink(path, brick->linkname, megapoil.st_size);
+	if (ret == -1)
+	{
+		perror("");
+		return (0);
+	}
 	brick->linkname[ret] = 0;
 	brick->nlink = megapoil.st_nlink;
 	brick->mode = megapoil.st_mode;
