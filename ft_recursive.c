@@ -16,20 +16,19 @@ void ft_recursive(t_data *list, char *opt, char *path, int h)
 {
 	t_data *tmp2;
 	char *ret;
-	int i;
 
-	i = 0;
 	tmp2 = list;
 	while (tmp2 != NULL)
 	{
-		if (S_ISDIR(tmp2->mode) && tmp2->name[i] != '.')
+		if (S_ISDIR(tmp2->mode) && tmp2->name[0] != '.')
 		{
 			ret = ft_mega_join(path, "/", tmp2->name);
-			if (!(path[0] == '.' && path[1] == '\0'))
+			if (!(path[0] == '.' && path[1] == '\0' && path[1] == '/'))
 				ft_putchar('\n');
 			ft_ls(opt, ret, h);
+			free(ret);
 		}
-		i++;
 		tmp2 = tmp2->next;
 	}
 }
+

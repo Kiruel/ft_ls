@@ -30,6 +30,7 @@
 typedef struct		s_data
 {
 	char			*name;
+	char			*linkname;
 	time_t			mtimes;
 	time_t			sizes;
 	int				uid;

@@ -44,7 +44,7 @@ $(NAME):
 
 test:
 	@gcc -c $(SOURCE) 
-	@gcc -o $(NAME) $(POINTO) $(CFLAG) -L libft/ -lft -I includes/
+	@gcc -o $(NAME) $(POINTO) $(CFLAG) -g -L libft/ -lft -I includes/
 	@make clean
 
 clean:

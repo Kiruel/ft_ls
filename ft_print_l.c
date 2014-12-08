@@ -41,10 +41,16 @@ void	ft_put_permissions(t_data *per)
 
 void	ft_coffee(t_data *tmp, int *size)
 {
-	char			*rettime;
+	char	*rettime;
+	char	*linkname;
+	// int		ret;
 
+	// ret = 0;
 	rettime = ctime(&tmp->mtimes);
 	rettime = ft_strsub(rettime, 4, 12);
+	// linkname = (char *)malloc(tmp->sizes + 1);
+	// ret = readlink(tmp->name, linkname, tmp->sizes);
+	// linkname[ret + 1] = 0;
 	ft_put_permissions(tmp);
 	ft_align_right(size[1], tmp->nlink);
 	ft_putnbr(tmp->nlink);
@@ -57,7 +63,15 @@ void	ft_coffee(t_data *tmp, int *size)
 	ft_putchar(' ');
 	ft_putstr(rettime);
 	ft_putchar(' ');
-	ft_putendl(tmp->name);
+	if (S_ISLNK(tmp->mode))
+	{
+		ft_putstr(tmp->name);
+		ft_putstr(" -> ");
+		ft_putendl(tmp->linkname);
+	}
+	else
+		ft_putendl(tmp->name);
+	// free(linkname);
 }
 
 void	ft_print_all(t_data *list, t_data *tmp, char *opt, int *size)
@@ -78,7 +92,7 @@ void	ft_print_l(t_data *tmp, t_data *list, char *opt, int *size)
 	else
 	{
 		if (opt[2] == 'a')
-			ft_putendl(tmp->name);		
+			ft_putendl(tmp->name);
 		if (opt[2] != 'a')
 		{
 			if (tmp->name[0] != '.')
