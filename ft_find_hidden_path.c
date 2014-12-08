@@ -12,11 +12,12 @@
 
 #include "includes/ft_ls.h"
 
-int		ft_find_hidden_path(char *path, char *opt, int p, int h)
+int		ft_find_hidden_path(char *path, char *opt, int p, int h, t_data *list)
 {
-	int i;
-	int j;
-	int k;
+	int 	i;
+	int 	j;
+	int 	k;
+	t_data 	*tmp2;
 
 	k = 0;
 	j = 0;
@@ -38,6 +39,19 @@ int		ft_find_hidden_path(char *path, char *opt, int p, int h)
 			ft_putstr(path);
 			ft_putstr(":\n");
 		}
+	}
+	j = 0;
+	if (opt[0] == 'l' && (S_ISDIR(list->mode)) && path[i + 1] != '.')
+	{
+		tmp2 = list;
+		ft_putstr("total ");
+		while (tmp2 != NULL)
+		{
+			j += tmp2->blocksize;
+			tmp2 = tmp2->next;
+		}
+		ft_putnbr(j);
+		ft_putchar('\n');
 	}
 	return (i);
 }

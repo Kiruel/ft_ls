@@ -75,25 +75,12 @@ int		ft_ls(char *opt, char *path, int h)
 		return (0);
 	while (path[i] != '\0')
 		i++;
-	if (opt[5] == 'R')
-		i = ft_find_hidden_path(path, opt, i, h);
+	if (opt[5] == 'R' || opt[0] == 'l')
+		i = ft_find_hidden_path(path, opt, i, h, list);
 	if (S_ISDIR(list->mode) && path[0] != '.' && opt[5] != 'R')
 	{
 		ft_putstr(path);
 		ft_putstr(":\n");
-	}
-	j = 0;
-	if (opt[0] == 'l' && (S_ISDIR(list->mode)))
-	{
-		tmp2 = list;
-		ft_putstr("total ");
-		while (tmp2 != NULL)
-		{
-			j += tmp2->blocksize;
-			tmp2 = tmp2->next;
-		}
-		ft_putnbr(j);
-		ft_putchar('\n');
 	}
 	list = ft_sort_list(&list, opt);
 	ft_print_list(list, opt, path, i);

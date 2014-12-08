@@ -42,7 +42,7 @@ typedef struct		s_data
 	struct s_data	*next;
 }					t_data;
 
-int					ft_find_hidden_path(char *path, char *opt, int i, int h);
+int					ft_find_hidden_path(char *path, char *opt, int i, int h, t_data *list);
 void				ft_print_l(t_data *tmp, t_data *list, char *opt, int *size);
 int					ft_ls(char *opt, char *path, int h);
 t_data				*ft_addlink(char *path, char *str);
