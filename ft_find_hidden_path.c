@@ -33,21 +33,18 @@ int		ft_find_hidden_path(char *path, char *opt, t_data *list, int h)
 	j = 0;
 	if ((!(path[0] == '.' && path[1] == 0)) && opt[5] == 'R')
 	{
-		if (path[i + 1] != '.')
-		{
 			ft_putstr(path);
 			ft_putstr(":\n");
-		}
 	}
 	if (opt[0] == 'l' && (S_ISDIR(list->mode)) && path[i + 1] != '.')
 	{
 		tmp2 = list;
-		ft_putstr("total ");
 		while (tmp2 != NULL)
 		{
 			j += tmp2->blocksize;
 			tmp2 = tmp2->next;
 		}
+		ft_putstr("total ");
 		ft_putnbr(j);
 		ft_putchar('\n');
 	}

@@ -23,8 +23,8 @@ void ft_recursive(t_data *list, char *opt, char *path, int h)
 		if (S_ISDIR(tmp2->mode) && (ft_strcmp(tmp2->name, ".") && ft_strcmp(tmp2->name, "..")))
 		{
 			ret = ft_mega_join(path, "/", tmp2->name);
-			if (!(path[0] == '.' && path[1] == '\0' && path[1] == '/'))
-				ft_putchar('\n');
+			// if (path[0] != '.' || path[1] != '\0' || path[1] != '/')
+			ft_putchar('\n');
 			ft_ls(opt, ret, h);
 			free(ret);
 		}
