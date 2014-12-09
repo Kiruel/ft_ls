@@ -57,7 +57,7 @@ void	ft_coffee(t_data *tmp, int *size)
 	ft_align_right(size[0], tmp->sizes);
 	ft_putnbr(tmp->sizes);
 	ft_putchar(' ');
-	if (tmp->mtimes < ((int)time(NULL) - 13042800))
+	if (tmp->mtimes < ((int)time(NULL) - 15768000))
 	{
 		rettime = ft_strsub(rettime, 4, 7);
 		if_time_sup = ft_strsub(if_time_sup, 19, 5);
@@ -80,29 +80,29 @@ void	ft_coffee(t_data *tmp, int *size)
 		ft_putendl(tmp->name);
 }
 
-void	ft_print_all(t_data *list, t_data *tmp, char *opt, int *size)
+void	ft_print_all(t_data *list, char *opt, int *size)
 {
 	if (opt[2] != 'a')
 	{
-		if (tmp->name[0] != '.')
-			ft_coffee(tmp, size);		
+		if (list->name[0] != '.')
+			ft_coffee(list, size);		
 	}
 	else
-		ft_coffee(tmp, size);
+		ft_coffee(list, size);
 }
 
-void	ft_print_l(t_data *tmp, t_data *list, char *opt, int *size)
+void	ft_print_l(t_data *list, char *opt, int *size)
 {
 	if (opt[0] == 'l')
-		ft_print_all(list, tmp, opt, size);
+		ft_print_all(list, opt, size);
 	else
 	{
 		if (opt[2] == 'a')
-			ft_putendl(tmp->name);
+			ft_putendl(list->name);
 		if (opt[2] != 'a')
 		{
-			if (tmp->name[0] != '.')
-				ft_putendl(tmp->name);			
+			if (list->name[0] != '.')
+				ft_putendl(list->name);			
 		}
 	}
 }
