@@ -24,10 +24,7 @@ void	ft_print_list(t_data *list, char *opt, char *path, int k)
 	tmp = list;
 	while (tmp2 != NULL)
 	{
-		if (path[k + 1] != '.')
-			ft_print_l(tmp2, tmp, opt, size);
-		else if (opt[5] == 'R' && opt[2] == 'a')
-			ft_print_l(tmp2, tmp, opt, size);
+		ft_print_l(tmp2, tmp, opt, size);
 		tmp2 = tmp2->next;
 	}
 	free(size);

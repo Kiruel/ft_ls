@@ -20,7 +20,6 @@ void ft_recursive(t_data *list, char *opt, char *path, int h)
 	tmp2 = list;
 	while (tmp2 != NULL)
 	{
-		// ft_putendl(tmp2->name);
 		if (S_ISDIR(tmp2->mode) && (ft_strcmp(tmp2->name, ".") && ft_strcmp(tmp2->name, "..")))
 		{
 			ret = ft_mega_join(path, "/", tmp2->name);
@@ -32,4 +31,3 @@ void ft_recursive(t_data *list, char *opt, char *path, int h)
 		tmp2 = tmp2->next;
 	}
 }
-
