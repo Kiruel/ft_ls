@@ -43,14 +43,10 @@ void	ft_coffee(t_data *tmp, int *size)
 {
 	char	*rettime;
 	char	*linkname;
-	// int		ret;
+	char	*if_time_sup;
 
-	// ret = 0;
 	rettime = ctime(&tmp->mtimes);
-	rettime = ft_strsub(rettime, 4, 12);
-	// linkname = (char *)malloc(tmp->sizes + 1);
-	// ret = readlink(tmp->name, linkname, tmp->sizes);
-	// linkname[ret + 1] = 0;
+	if_time_sup = ctime(&tmp->mtimes);
 	ft_put_permissions(tmp);
 	ft_align_right(size[1], tmp->nlink);
 	ft_putnbr(tmp->nlink);
@@ -61,7 +57,18 @@ void	ft_coffee(t_data *tmp, int *size)
 	ft_align_right(size[0], tmp->sizes);
 	ft_putnbr(tmp->sizes);
 	ft_putchar(' ');
-	ft_putstr(rettime);
+	if (tmp->mtimes < ((int)time(NULL) - 13042800))
+	{
+		rettime = ft_strsub(rettime, 4, 7);
+		if_time_sup = ft_strsub(if_time_sup, 19, 5);
+		ft_putstr(rettime);
+		ft_putstr(if_time_sup);
+	}
+	else
+	{
+		rettime = ft_strsub(rettime, 4, 12);
+		ft_putstr(rettime);
+	}
 	ft_putchar(' ');
 	if (S_ISLNK(tmp->mode))
 	{
@@ -71,7 +78,6 @@ void	ft_coffee(t_data *tmp, int *size)
 	}
 	else
 		ft_putendl(tmp->name);
-	// free(linkname);
 }
 
 void	ft_print_all(t_data *list, t_data *tmp, char *opt, int *size)

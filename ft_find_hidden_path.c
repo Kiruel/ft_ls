@@ -31,6 +31,14 @@ int		ft_find_hidden_path(char *path, char *opt, t_data *list, int h)
 		j++;
 	}
 	j = 0;
+	if ((!(path[0] == '.' && path[1] == 0)) && opt[5] == 'R')
+	{
+		if (path[i + 1] != '.')
+		{
+			ft_putstr(path);
+			ft_putstr(":\n");
+		}
+	}
 	if (opt[0] == 'l' && (S_ISDIR(list->mode)) && path[i + 1] != '.')
 	{
 		tmp2 = list;
@@ -43,13 +51,5 @@ int		ft_find_hidden_path(char *path, char *opt, t_data *list, int h)
 		ft_putnbr(j);
 		ft_putchar('\n');
 	}
-	if ((!(path[0] == '.' && path[1] == 0)) && opt[5] == 'R')
-	{
-		if (path[i + 1] != '.')
-		{
-			ft_putstr(path);
-			ft_putstr(":\n");
-		}
-	}	
 	return (i);
 }
