@@ -49,4 +49,5 @@ alphabétique. Les fichiers les plus récents sont présentés en premier.
 	-recursive depuis un autre dossier le path ne s'affiche pas.(done)
 
 ################################       NOT DONE     ##############################
--gerer les fichiers devices.
+-gerer les fichiers devices. voir la strcture stat (rdev) et l.enregistrer dans 
+notre structure.
