@@ -31,10 +31,15 @@ int		ft_find_hidden_path(char *path, char *opt, t_data *list, int h)
 		j++;
 	}
 	j = 0;
-	if ((!(path[0] == '.' && path[1] == 0)) && opt[5] == 'R')
+	if (opt[5] == 'R' && ft_return_index(path))
 	{
-			ft_putstr(path);
-			ft_putstr(":\n");
+		ft_putstr(path);
+		ft_putstr(":\n");
+	}
+	else if (opt[5] == 'R' && opt[2] == 'a')
+	{
+		ft_putstr(path);
+		ft_putstr(":\n");
 	}
 	if (opt[0] == 'l' && (S_ISDIR(list->mode)) && path[i + 1] != '.')
 	{

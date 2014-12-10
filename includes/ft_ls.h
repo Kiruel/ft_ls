@@ -57,5 +57,6 @@ void				ft_add_space_owner(int max_size, int size_owner);
 char    			**ft_find_path(int ac, char **av, char *opt);
 void 				ft_recursive(t_data *list, char *opt, char *path, int h);
 char				*ft_mega_join(char *path, char *backslash, char *name);
+int					ft_return_index(char *path);
 
 #endif
