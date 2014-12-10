@@ -85,7 +85,7 @@ int		ft_ls(char *opt, char *path, int h)
 		i = ft_find_hidden_path(path, opt, list, h);
 	list = ft_sort_list(&list, opt);
 	ft_print_list(list, opt, path, i);
-	if (g == 0 && opt[2] == 'a')
+	if (g == 0 && opt[2] == 'a' && opt[3] != 'r')
 		ft_putchar('\n');
 	g++;
 	if (opt[5] == 'R')
