@@ -69,6 +69,7 @@ int		ft_ls(char *opt, char *path, int h)
 	int			i;
 	int			j;
 	t_data		*tmp2;
+	static int	g = 0;
 
 	i = 0;
 	if (ft_create_chain(path, &list, opt) == -1)
@@ -84,6 +85,9 @@ int		ft_ls(char *opt, char *path, int h)
 		i = ft_find_hidden_path(path, opt, list, h);
 	list = ft_sort_list(&list, opt);
 	ft_print_list(list, opt, path, i);
+	if (g == 0 && opt[2] == 'a')
+		ft_putchar('\n');
+	g++;
 	if (opt[5] == 'R')
 		ft_recursive(list, opt, path, h);
 	ft_free_list(&list);
