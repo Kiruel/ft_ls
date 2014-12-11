@@ -52,6 +52,7 @@ t_data	*ft_addlink(char *path, char *str)
 	brick->mode = megapoil.st_mode;
 	brick->name = ft_strdup(str);
 	brick->blocksize = (int)megapoil.st_blocks;
+	brick->device = megapoil.st_rdev;
 	brick->next = NULL;
 	free(path);
 	return (brick);

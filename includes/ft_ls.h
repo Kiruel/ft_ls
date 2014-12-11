@@ -40,6 +40,7 @@ typedef struct		s_data
 	nlink_t			nlink;
 	mode_t			mode;
 	int				blocksize;
+	dev_t			device;
 	struct s_data	*next;
 }					t_data;
 

@@ -64,11 +64,8 @@ int		ft_create_chain(char *path, t_data **list, char *opt)
 
 int		ft_ls(char *opt, char *path, int h)
 {
-	S_DIRENT	*poil;
 	t_data 		*list;
 	int			i;
-	int			j;
-	t_data		*tmp2;
 	static int	g = 0;
 
 	i = 0;

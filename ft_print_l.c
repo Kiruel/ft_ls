@@ -12,6 +12,35 @@
 
 #include "includes/ft_ls.h"
 
+static int		ft_patate(int n)
+{
+	int i;
+
+	i = 0;
+	while (n)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
+}
+
+void	ft_align_right_now(int maxnbr, int size)
+{
+	int i;
+	int j;
+
+	i = ft_patate(size);
+	j = ft_patate(maxnbr);
+	if (i == 0)
+		i++;
+	while (i < j)
+	{
+		ft_putchar(' ');
+		i++;
+	}
+}
+
 void	ft_put_permissions(t_data *per)
 {
 	if (S_ISBLK(per->mode))
@@ -54,8 +83,21 @@ void	ft_coffee(t_data *tmp, int *size)
 	ft_putstr(tmp->name_owner);
 	ft_add_space_owner(size[2], ft_strlen(tmp->name_owner));
 	ft_putstr(tmp->name_group);
-	ft_align_right(size[0], tmp->sizes);
-	ft_putnbr(tmp->sizes);
+	if (S_ISCHR(tmp->mode) || S_ISBLK(tmp->mode))
+	{
+		ft_align_right_now(size[3], major(tmp->device));
+		ft_add_space_owner(size[5], ft_strlen(tmp->name_group));
+		ft_putchar(' ');
+		ft_putnbr(major(tmp->device));
+		ft_putstr(", ");
+		ft_align_right_now(size[4], minor(tmp->device));
+		ft_putnbr(minor(tmp->device));
+	}
+	else
+	{
+		ft_align_right(size[0], tmp->sizes);
+		ft_putnbr(tmp->sizes);
+	}
 	ft_putchar(' ');
 	if (tmp->mtimes < ((int)time(NULL) - 15768000))
 	{
