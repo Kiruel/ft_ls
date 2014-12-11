@@ -29,23 +29,25 @@
 
 typedef struct		s_data
 {
-	char			*name;
-	char			*linkname;
-	time_t			mtimes;
-	time_t			sizes;
-	int				uid;
-	int				gid;
-	char			*name_owner;
-	char			*name_group;
-	nlink_t			nlink;
 	mode_t			mode;
 	int				blocksize;
+	char			*name_owner;
+	int				uid;	
+	char			*name_group;
+	int				gid;	
+	int				size;
+	time_t			mtimes;
+	nlink_t			nlink;
+	char			*name;
+	char			*linkname;	
 	dev_t			device;
 	struct s_data	*next;
 }					t_data;
 typedef struct 		s_dir
 {
 	t_data 			*list;
+	int				total_block;
+	int				isfile;
 	int				max_size;
 	int				max_link;
 	int				max_name_owner;
@@ -55,5 +57,6 @@ typedef struct 		s_dir
 }					t_dir;
 
 char *ft_find_opt(int ac, char **av);
+char **ft_find_path(int ac, char **av);
 
 #endif

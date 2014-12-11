@@ -15,7 +15,8 @@ NAME = ft_ls
 CFLAG = -Wall -Werror -Wextra 
 
 SOURCE = main.c \
-	ft_find_opt.c
+	ft_find_opt.c \
+	ft_find_path.c
 
 POINTO = $(SOURCE:.c=.o)
 
