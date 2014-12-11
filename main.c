@@ -16,8 +16,11 @@ int	main(int ac, char **av)
 {
 	int		i;
     int     j;
+    int     g;
+    int     k;
 	char	opt[6];
     char    **path;
+    S_STAT  stat;
 
 	i = -1;
 	while (opt[i++] != '\0')
@@ -47,6 +50,16 @@ int	main(int ac, char **av)
 	}
     i = 0;
     path = ft_find_path(ac, av, opt);
+    g = 0;
+    k = 0;
+    while (path[g] != 0)
+    {
+        if (lstat(path[g], &stat) == -1)
+            return (0);
+        if (S_ISREG(stat.st_mode))
+            k++;
+        g++;
+    }
     j = 0;
     while (path[j] != '\0')
         j++;
@@ -55,7 +68,7 @@ int	main(int ac, char **av)
     while (path[i] != '\0')
     {
         ft_ls(opt, path[i], j);
-        if (path[i + 1] != '\0')
+        if (path[i + 1] != '\0' && k == 0)
             ft_putchar('\n');
         i++;
     }

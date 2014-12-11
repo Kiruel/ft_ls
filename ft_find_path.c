@@ -29,17 +29,21 @@ char **ft_swap_arg(char *opt, char **path)
 {
     char *tmp;
     int 	i;
+    S_STAT  stat;
+
 
     i = 0;
     while (path[i] != '\0' && path[i + 1] != 0)
     {
-        if (ft_strcmp(path[i], path[i + 1]) < 0 && opt[3] == 'r')
+        if (lstat(path[i], &stat) == -1)
+            return (0);
+        if (ft_strcmp(path[i], path[i + 1]) < 0 && opt[3] == 'r' && (!S_ISREG(stat.st_mode)))
         {
             tmp = path[i];
             path[i] = path[i + 1];
             path[i + 1] = tmp;
         }
-        else if (ft_strcmp(path[i], path[i + 1]) > 0)
+        else if (ft_strcmp(path[i], path[i + 1]) > 0 && (!S_ISREG(stat.st_mode)))
         {
             tmp = path[i];
             path[i] = path[i + 1];
