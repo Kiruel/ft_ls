@@ -17,5 +17,8 @@ int	main(int ac, char **av)
 	char *opt;
 
     opt = ft_find_opt(ac, av);
+    if (!opt)
+        return (0);
+    
 	return (0);
 }

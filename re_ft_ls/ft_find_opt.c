@@ -12,27 +12,27 @@
 
 #include "includes/ft_ls.h"
 
-void ft_complet_opt(char **opt, char av)
+int ft_complet_opt(char *opt, char av)
 {
-	if (av != 'a' && av != 'l' && av != 'r' && av != 't' && av != 'R' \
-		&& av != '-')
+	if (av != 'a' && av != 'l' && av != 'r' && av != 't' && av != 'R')
 	{
-		ft_putstr("ft_ls: illegal option -- ");
-		ft_putchar(av);
-		ft_putchar('\n');
-		ft_putendl("usage: ft_ls [-alrtR] [file ...]");
-		exit(1);
+		write(2, "ft_ls: illegal option -- ", 25);
+		write(2, &av, 1);
+		write(2, "\n", 1);
+		write(2, "usage: ft_ls [-alrtR] [file ...]\n", 33);
+		return (-1);
 	}
 	if (av == 'a')
-		*opt[0] = 'a';
+		opt[0] = 'a';
 	if (av == 'l')
-		*opt[1] = 'l';
+		opt[1] = 'l';
 	if (av == 'r')
-		*opt[2] = 'r';
+		opt[2] = 'r';
 	if (av == 't')
-		*opt[3] = 't';
+		opt[3] = 't';
 	if (av == 'R')
-		*opt[4] = 'R';
+		opt[4] = 'R';
+	return (0);
 }
 
 char *ft_find_opt(int ac, char **av)
@@ -41,15 +41,19 @@ char *ft_find_opt(int ac, char **av)
 	int 	i;
 	int 	j;
 
+	opt = (char*)malloc(sizeof(char) * 5);
+	if (opt == 0)
+		return (0);
 	ft_bzero(opt, 5);
 	i = 0;
     j = 1;
 	while (ac > 1 && j < ac)
 	{
-        i = 0;
+        i = 1;
         while (av[j][i] != '\0' && av[j][0] == '-')
         {
-			ft_complet_opt(&opt, av[j][i]);
+			if (ft_complet_opt(opt, av[j][i]) == -1)
+				return (0);
 			i++;
         }
         j++;

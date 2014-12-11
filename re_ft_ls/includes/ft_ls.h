@@ -43,6 +43,16 @@ typedef struct		s_data
 	dev_t			device;
 	struct s_data	*next;
 }					t_data;
+typedef struct 		s_dir
+{
+	t_data 			*list;
+	int				max_size;
+	int				max_link;
+	int				max_name_owner;
+	int				max_name_group;
+	int				max_major;
+	int				max_minor;
+}					t_dir;
 
 char *ft_find_opt(int ac, char **av);
 
