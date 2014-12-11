@@ -44,6 +44,6 @@ typedef struct		s_data
 	struct s_data	*next;
 }					t_data;
 
-char *ft_find_opt(int ac, char *av);
+char *ft_find_opt(int ac, char **av);
 
 #endif

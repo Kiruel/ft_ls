@@ -42,4 +42,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all test fclean clean re
+.PHONY: all test fclean clean re $(NAME)
