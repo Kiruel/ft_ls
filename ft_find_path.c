@@ -12,22 +12,9 @@
 
 #include "includes/ft_ls.h"
 
-/*int		ft_errno(char *path)
-{
-	DIR *s_dir;
-
-	s_dir = NULL;
-	s_dir = opendir(path);
-	if (s_dir == NULL)
-		return (errno);
-	if (closedir(s_dir) == -1)
-		return (-1);
-	return (0);
-}
-*/
 char **ft_swap_arg(char *opt, char **path)
 {
-    char *tmp;
+    char    *tmp;
     int 	i;
     S_STAT  stat;
 
@@ -35,15 +22,16 @@ char **ft_swap_arg(char *opt, char **path)
     i = 0;
     while (path[i] != '\0' && path[i + 1] != 0)
     {
-        if (lstat(path[i], &stat) == -1)
-            return (0);
-        if (ft_strcmp(path[i], path[i + 1]) < 0 && opt[3] == 'r' && (!S_ISREG(stat.st_mode)))
+        lstat(path[i], &stat);
+        if (ft_strcmp(path[i], path[i + 1]) < 0 && opt[3] == 'r' && \
+            (!S_ISREG(stat.st_mode)))
         {
             tmp = path[i];
             path[i] = path[i + 1];
             path[i + 1] = tmp;
         }
-        else if (ft_strcmp(path[i], path[i + 1]) > 0 && (!S_ISREG(stat.st_mode)))
+        else if (ft_strcmp(path[i], path[i + 1]) > 0 && \
+            (S_ISREG(stat.st_mode)))
         {
             tmp = path[i];
             path[i] = path[i + 1];

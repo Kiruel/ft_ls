@@ -21,6 +21,7 @@ int	main(int ac, char **av)
 	char	opt[6];
     char    **path;
     S_STAT  stat;
+    DIR     *s_dir;
 
 	i = -1;
 	while (opt[i++] != '\0')
@@ -54,8 +55,7 @@ int	main(int ac, char **av)
     k = 0;
     while (path[g] != 0)
     {
-        if (lstat(path[g], &stat) == -1)
-            return (0);
+        lstat(path[g], &stat);
         if (S_ISREG(stat.st_mode))
             k++;
         g++;

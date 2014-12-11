@@ -47,7 +47,7 @@ int		ft_find_hidden_path(char *path, char *opt, t_data *list, int h)
 			ft_putstr(":\n");
 		}
 	}
-	if (opt[0] == 'l' && (S_ISDIR(list->mode)) && path[i + 1] != '.')
+	if (opt[0] == 'l' && (S_ISDIR(list->mode)))
 	{
 		tmp2 = list;
 		while (tmp2 != NULL)

@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive.c                                     :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/05 14:57:37 by etheodor          #+#    #+#             */
-/*   Updated: 2014/12/05 14:57:38 by etheodor         ###   ########.fr       */
+/*   Created: 2014/11/10 18:13:56 by etheodor          #+#    #+#             */
+/*   Updated: 2014/11/11 16:55:16 by etheodor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_ls.h"
-
-void ft_recursive(t_data *list, char *opt, char *path, int h)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	t_data *tmp2;
-	char *ret;
+	unsigned int i;
 
-	tmp2 = list;
-	while (tmp2 != NULL)
+	i = 0;
+	if (s && f)
 	{
-		if (S_ISDIR(tmp2->mode) && (ft_strcmp(tmp2->name, ".") && ft_strcmp(tmp2->name, "..")))
+		while (s[i])
 		{
-			ret = ft_mega_join(path, "/", tmp2->name);
-			// ft_putendl(ret);
-			if (ft_return_index(ret))
-				ft_putchar('\n');
-			ft_ls(opt, ret, h);
-			free(ret);
+			f(i, &(s[i]));
+			i++;
 		}
-		tmp2 = tmp2->next;
 	}
 }

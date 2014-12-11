@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive.c                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/05 14:57:37 by etheodor          #+#    #+#             */
-/*   Updated: 2014/12/05 14:57:38 by etheodor         ###   ########.fr       */
+/*   Created: 2014/11/27 09:13:37 by etheodor          #+#    #+#             */
+/*   Updated: 2014/11/27 09:26:34 by etheodor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_ls.h"
 
-void ft_recursive(t_data *list, char *opt, char *path, int h)
+int	main(int ac, char **av)
 {
-	t_data *tmp2;
-	char *ret;
+	char *opt;
 
-	tmp2 = list;
-	while (tmp2 != NULL)
-	{
-		if (S_ISDIR(tmp2->mode) && (ft_strcmp(tmp2->name, ".") && ft_strcmp(tmp2->name, "..")))
-		{
-			ret = ft_mega_join(path, "/", tmp2->name);
-			// ft_putendl(ret);
-			if (ft_return_index(ret))
-				ft_putchar('\n');
-			ft_ls(opt, ret, h);
-			free(ret);
-		}
-		tmp2 = tmp2->next;
-	}
+    opt = ft_find_opt(ac, av);
+	return (0);
 }

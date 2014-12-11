@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive.c                                     :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etheodor <etheodor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/05 14:57:37 by etheodor          #+#    #+#             */
-/*   Updated: 2014/12/05 14:57:38 by etheodor         ###   ########.fr       */
+/*   Created: 2014/11/07 15:37:24 by etheodor          #+#    #+#             */
+/*   Updated: 2014/11/11 16:41:26 by etheodor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_ls.h"
+#include <string.h>
 
-void ft_recursive(t_data *list, char *opt, char *path, int h)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	t_data *tmp2;
-	char *ret;
+	int		i;
+	size_t	j;
 
-	tmp2 = list;
-	while (tmp2 != NULL)
+	j = 0;
+	if (s2[0] == 0)
+		return ((char*)s1);
+	while (*s1 && j < n)
 	{
-		if (S_ISDIR(tmp2->mode) && (ft_strcmp(tmp2->name, ".") && ft_strcmp(tmp2->name, "..")))
+		if (*s1 == *s2)
 		{
-			ret = ft_mega_join(path, "/", tmp2->name);
-			// ft_putendl(ret);
-			if (ft_return_index(ret))
-				ft_putchar('\n');
-			ft_ls(opt, ret, h);
-			free(ret);
+			i = 0;
+			while (s1[i] == s2[i] && j + i < n)
+			{
+				i++;
+				if (s2[i] == 0)
+					return ((char*)s1);
+			}
 		}
-		tmp2 = tmp2->next;
+		s1++;
+		j++;
 	}
+	return (0);
 }
