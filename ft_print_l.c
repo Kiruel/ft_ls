@@ -73,7 +73,11 @@ void	ft_coffee(t_data *tmp, int *size)
 	char	*rettime;
 	char	*linkname;
 	char	*if_time_sup;
+	t_data  *tmp2;
+	int 	i;
 
+	i = 0;
+	tmp2 = tmp;
 	rettime = ctime(&tmp->mtimes);
 	if_time_sup = ctime(&tmp->mtimes);
 	ft_put_permissions(tmp);
@@ -95,6 +99,14 @@ void	ft_coffee(t_data *tmp, int *size)
 	}
 	else
 	{
+		while (tmp2 != NULL)
+		{
+			if (S_ISCHR(tmp2->mode) || S_ISBLK(tmp2->mode))
+				i++;
+			tmp2 = tmp2->next;
+		}
+		if (i > 0)
+			ft_putstr("            ");
 		ft_align_right(size[0], tmp->sizes);
 		ft_putnbr(tmp->sizes);
 	}
