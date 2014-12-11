@@ -12,7 +12,7 @@
 
 #include "includes/ft_ls.h"
 
-void	ft_create_chain(t_dir *chain, char *path, char *opt)
+t_dir	*ft_create_chain(t_dir *chain, char *path, char *opt)
 {
-	
+	return (0);
 }

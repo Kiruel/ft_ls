@@ -26,7 +26,7 @@ int	main(int ac, char **av)
     i = 0;
     while (path[i] != 0)
     {
-        ft_create_chain(chain, path, opt);
+        chain = ft_create_chain(chain, path[i], opt);
         i++;
     }
 	return (0);

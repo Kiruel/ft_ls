@@ -56,7 +56,8 @@ typedef struct 		s_dir
 	int				max_minor;
 }					t_dir;
 
-char *ft_find_opt(int ac, char **av);
-char **ft_find_path(int ac, char **av);
+char 	*ft_find_opt(int ac, char **av);
+char 	**ft_find_path(int ac, char **av);
+t_dir 	*ft_create_chain(t_dir *chain, char *path, char *opt);
 
 #endif

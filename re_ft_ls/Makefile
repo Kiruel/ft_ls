@@ -16,7 +16,8 @@ CFLAG = -Wall -Werror -Wextra
 
 SOURCE = main.c \
 	ft_find_opt.c \
-	ft_find_path.c
+	ft_find_path.c \
+	ft_create_chain.c
 
 POINTO = $(SOURCE:.c=.o)
 
