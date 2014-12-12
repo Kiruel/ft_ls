@@ -73,7 +73,7 @@ int		ft_ls(char *opt, char *path, int h)
 		return (0);
 	while (path[i] != '\0')
 		i++;
-	if (S_ISDIR(list->mode) && path[0] != '.' && opt[5] != 'R' && h > 1)
+	if (S_ISDIR(list->mode) && opt[5] != 'R' && h > 1)
 	{
 		ft_putstr(path);
 		ft_putstr(":\n");

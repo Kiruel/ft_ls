@@ -24,9 +24,11 @@ int	main(int ac, char **av)
         return (0);
     path = ft_find_path(ac, av);
     i = 0;
+    chain = NULL;
     while (path[i] != 0)
     {
         chain = ft_create_chain(chain, path[i], opt);
+        chain = chain->next;
         i++;
     }
 	return (0);

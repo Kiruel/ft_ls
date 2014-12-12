@@ -54,6 +54,7 @@ typedef struct 		s_dir
 	int				max_name_group;
 	int				max_major;
 	int				max_minor;
+	struct s_dir 	*next;
 }					t_dir;
 
 char 	*ft_find_opt(int ac, char **av);
