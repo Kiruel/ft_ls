@@ -12,9 +12,22 @@
 
 #include "includes/ft_ls.h"
 
-int	main(int ac, char **av)
+void	ft_need_area(char **path, int k, int j, char *opt)
 {
-	int		i;
+	int i;
+
+	i = 0;
+	while (path[i] != '\0')
+	{
+		ft_ls(opt, path[i], j);
+		if (path[i + 1] != '\0' && k == 0)
+			ft_putchar('\n');
+		i++;
+	}
+}
+
+int		main(int ac, char **av)
+{
 	int		j;
 	int		k;
 	char	*opt;
@@ -39,13 +52,6 @@ int	main(int ac, char **av)
 		j++;
 	if (path[0] == NULL)
 		ft_ls(opt, ".", j);
-    i = 0;
-	while (path[i] != '\0')
-	{
-		ft_ls(opt, path[i], j);
-		if (path[i + 1] != '\0' && k == 0)
-			ft_putchar('\n');
-		i++;
-	}
+	ft_need_area(path, k, j, opt);
 	return (0);
 }
