@@ -44,7 +44,7 @@ typedef struct		s_data
 	struct s_data	*next;
 }					t_data;
 
-void 				ft_find_hidden_path(char *path, char *opt, t_data *list);
+void				ft_find_hidden_path(char *path, char *opt, t_data *list);
 void				ft_print_l(t_data *list, char *opt, int *size);
 int					ft_ls(char *opt, char *path, int h);
 t_data				*ft_addlink(char *path, char *str);
@@ -55,14 +55,15 @@ void				ft_list_reverse(t_data **begin_list);
 void				ft_align_right(int maxnbr, int size);
 int					*ft_count_space(t_data *list, char *opt);
 void				ft_add_space_owner(int max_size, int size_owner);
-char    			**ft_find_path(char **av, char *opt);
-void 				ft_recursive(t_data *list, char *opt, char *path, int h);
+char				**ft_find_path(char **av, char *opt);
+void				ft_recursive(t_data *list, char *opt, char *path, int h);
 char				*ft_mega_join(char *path, char *backslash, char *name);
 int					ft_return_index(char *path);
 void				ft_align_right_now(int maxnbr, int size);
-void 				ft_print_time(t_data *tmp, char *rettime, char	*if_time_sup);
+void				ft_print_time(t_data *tmp, char *rettime, \
+	char *if_time_sup);
 void				ft_put_permissions(t_data *per);
-void 				ft_print_fail(t_data *tmp, int *size);
-char 				*ft_find_opt(int ac, char **av);
+void				ft_print_fail(t_data *tmp, int *size);
+char				*ft_find_opt(int ac, char **av);
 
 #endif

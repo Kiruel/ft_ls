@@ -39,13 +39,12 @@ int		main(int ac, char **av)
 	if (!opt)
 		return (0);
 	path = ft_find_path(av, opt);
-    j = 0;
-	while (path[j] != 0)
+	j = -1;
+	while (path[++j] != 0)
 	{
 		lstat(path[j], &stat);
 		if (S_ISREG(stat.st_mode))
 			k++;
-		j++;
 	}
 	j = 0;
 	while (path[j] != '\0')

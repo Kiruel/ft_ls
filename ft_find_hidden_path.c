@@ -50,7 +50,7 @@ void	ft_path_total(t_data *tmp2, char *opt)
 	}
 }
 
-void 	ft_find_hidden_path(char *path, char *opt, t_data *list)
+void	ft_find_hidden_path(char *path, char *opt, t_data *list)
 {
 	int		i;
 	int		j;
